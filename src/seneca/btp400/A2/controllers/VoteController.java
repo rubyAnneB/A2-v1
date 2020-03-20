@@ -11,8 +11,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import seneca.btp400.A2.dao.dbAccessObj;
-import seneca.btp400.A2.model.Voter;
-
 
 import java.io.IOException;
 import java.net.URL;
@@ -50,7 +48,7 @@ public class VoteController implements Initializable {
         this.voterID = voterID;
     }
 
-    public void changeConfirmVoteScene(ActionEvent event, int candidateID) throws IOException {
+    public void changeConfirmVoteScene(ActionEvent event, int candidateID,String candidateName) throws IOException {
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../resources/fxml/ConfirmVote.fxml"));
@@ -60,7 +58,7 @@ public class VoteController implements Initializable {
 
         //Access controller
         ConfirmVoteController controller = loader.getController();
-        controller.initData(voterID,candidateID);
+        controller.initData(voterID,candidateID,candidateName);
 
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(confirmScene);
@@ -71,7 +69,7 @@ public class VoteController implements Initializable {
         CandidateToggleButton cid = (CandidateToggleButton) candidateToggleGrp.getSelectedToggle();
         if(cid!=null){
             System.out.println(cid.ID);
-            changeConfirmVoteScene(event, cid.ID);
+            changeConfirmVoteScene(event, cid.ID,cid.getText());
         }else{
             warning.setText("Please choose a candidate");
         }

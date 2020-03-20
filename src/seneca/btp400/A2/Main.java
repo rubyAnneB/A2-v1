@@ -35,7 +35,6 @@ public class Main extends Application {
             System.out.println(r.getString("fname"));
         }
 
-
         primaryStage.show();
     }
 
