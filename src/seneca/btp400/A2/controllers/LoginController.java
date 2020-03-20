@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import seneca.btp400.A2.dao.dbAccessObj;
@@ -26,7 +27,8 @@ import seneca.btp400.A2.model.Voter;
  * @since 2020-03-19
  * @version 1.0
  *
- * Controller for the login scene. Takes care of the authentication process.
+ * Controller for the login scene. Takes care of the authentication process. And builds the voter object for the
+ * voting processs
  */
 public class LoginController implements Initializable {
 
@@ -44,7 +46,7 @@ public class LoginController implements Initializable {
      * @throws IOException
      */
     @FXML
-    private void BackbtnAction(ActionEvent event) throws IOException {
+    private void backbtnAction(ActionEvent event) throws IOException {
         voter = null;
         Parent welcome = FXMLLoader.load(getClass().getResource("../resources/fxml/Welcome.fxml"));
         Scene welcomeScene = new Scene(welcome);
@@ -90,7 +92,7 @@ public class LoginController implements Initializable {
     private void LoginAction(ActionEvent event) throws IOException, SQLException {
         String email = emailTxtfld.getText();
 
-        voter = db.buildVoter(email);
+        buildVoter(email);
 
         //Find a way to simplify this I don't like all these nested if statements -R
         if(voter.isValid()){
@@ -108,6 +110,29 @@ public class LoginController implements Initializable {
         }else{
             message.setText("email not in system");
         }
+
+
+    }
+
+    /**
+     * Creates a voter based on the information available for the student with the email
+     * @param email student's email
+     * @return empty voter if email is invalid else voter constructed from the information retrieved from database
+     * @throws SQLException
+     */
+    public void buildVoter (String email) throws SQLException {
+        voter = new Voter();
+        ResultSet resultSet = db.getVoterData(email);
+
+        if(resultSet.next()){
+            voter.setID(resultSet.getInt("idStudent"));
+            voter.setFname(resultSet.getString("fname"));
+            voter.setLname(resultSet.getString("lname"));
+            voter.setEmail(email);
+            voter.setVoted(resultSet.getBoolean("voted"));
+            voter.setPassword(resultSet.getString("password"));
+        }
+
 
 
     }

@@ -42,7 +42,7 @@ public class WelcomeUserController implements Initializable {
     public void initData(Voter voter){
         this.voter= voter;
        welcomeMessageLbl.setText("Welcome, "+ this.voter.getFullName());
-       agreeChckbx.setText("I "+this.voter.getFullName()+" have read and understood the above");
+       agreeChckbx.setText("I, "+this.voter.getFullName()+" have read and understood the above");
 
     }
 
@@ -52,7 +52,7 @@ public class WelcomeUserController implements Initializable {
      * @param event
      * @throws IOException
      */
-    public void  changetoVotingScreen(ActionEvent event) throws IOException {
+    public void changetoVotingScreen(ActionEvent event) throws IOException {
         if(agreeChckbx.isSelected()){
             Parent vote = FXMLLoader.load(getClass().getResource("../resources/fxml/Vote.fxml"));
             Scene voteScene = new Scene(vote);
@@ -93,4 +93,7 @@ public class WelcomeUserController implements Initializable {
     }
 
 
+    public void clearMessage(ActionEvent event) {
+        alertLbl.setText("");
+    }
 }

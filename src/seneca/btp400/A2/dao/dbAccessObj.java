@@ -15,7 +15,6 @@ import seneca.btp400.A2.util.dbConnect;
 public class dbAccessObj {
 
     private dbConnect db;
-    private ResultSet resultSet;
     private Statement statement;
 
 
@@ -38,26 +37,6 @@ public class dbAccessObj {
         return statement.executeQuery("select * from students where email like '"+email+"'");
     }
 
-
-    /**
-     * Creates a voter based on the information available for the student with the email
-     * @param email student's email
-     * @return empty voter if email is invalid else voter constructed from the information retrieved from database
-     * @throws SQLException
-     */
-    public Voter buildVoter (String email) throws SQLException{
-        Voter voter = new Voter();
-        resultSet = getVoterData(email);
-        if(resultSet.next()){
-            voter.setID(resultSet.getInt("idStudent"));
-            voter.setFname(resultSet.getString("fname"));
-            voter.setLname(resultSet.getString("lname"));
-            voter.setEmail(email);
-            voter.setVoted(resultSet.getBoolean("voted"));
-            voter.setPassword(resultSet.getString("password"));
-        }
-        return voter;
-    }
 
     /**
      * Increments the candidate with the passed ID
