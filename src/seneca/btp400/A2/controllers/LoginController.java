@@ -31,9 +31,11 @@ public class LoginController implements Initializable {
     @FXML PasswordField passwordField;
     @FXML Label message;
     dbAccessObj db;
+    Voter voter;
 
     @FXML
     private void BackbtnAction(ActionEvent event) throws IOException {
+        voter = null;
         Parent welcome = FXMLLoader.load(getClass().getResource("../resources/fxml/Welcome.fxml"));
         Scene welcomeScene = new Scene(welcome);
 
@@ -43,17 +45,41 @@ public class LoginController implements Initializable {
         window.show();
     }
 
+    private void welcomeUserSceneChange (ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../resources/fxml/WelcomeUser.fxml"));
+        Parent welcomeUser= loader.load();
+
+        Scene welcomeUserScene = new Scene(welcomeUser);
+
+        //access controller to access method to initialize its voter object
+        WelcomeUserController controller = loader.getController();
+        //TODO:WRite the method to initialize the voter object
+        //controller.initData
+
+        //get stage information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(welcomeUserScene);
+        window.show();
+
+    }
+
     @FXML //TODO: do more research on user verification
     private void LoginAction(ActionEvent event) throws IOException, SQLException {
         String email = emailTxtfld.getText();
 
-        Voter voter = db.buildVoter(email);
+        voter = db.buildVoter(email);
 
-        if(voter.getId() != 0){
+        //Find a way to simplify this I don't like all these nested if statements -R
+        if(voter.isValid()){
             if(passwordField.getText().equals(voter.getPassword())){
-                System.out.println("Login Successful");
-                message.setText("");
-                //switch scenes-pass voter info
+                if(voter.getVoted()){
+                    message.setText("This voter has already voted");
+                }else{
+                    message.setText("");
+                    welcomeUserSceneChange(event);
+                }
+
             }else{
                 message.setText("incorrect password");
             }
@@ -76,6 +102,5 @@ public class LoginController implements Initializable {
         message.setText("");
         emailTxtfld.setText("");
         passwordField.setText("");
-        System.out.println("LLLLLLLL");
     }
 }

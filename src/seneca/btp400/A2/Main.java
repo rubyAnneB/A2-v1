@@ -16,18 +16,11 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/Welcome.fxml"));
         primaryStage.setTitle("Assignment 2");
         primaryStage.setScene(new Scene(root));
-        dbAccessObj d= new dbAccessObj();
-        System.out.println(d.getVoted(11));
-        System.out.println(d.getFullName(0));
-        System.out.println(d.getFullName(12659)); //Malia	Jambrozek
-        Voter v = d.buildVoter(12659);
-        Voter v1 = d.buildVoter("screwe2a@cdbaby89.com");
-        System.out.println(v1);
-        System.out.println(v);
+
+
         primaryStage.show();
     }
 
-    //hello
 
 
     public static void main(String[] args) {

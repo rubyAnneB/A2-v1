@@ -25,21 +25,10 @@ public class dbAccessObj {
     }
 
     public ResultSet getVoterData (String email) throws SQLException{
-        return statement.executeQuery("select * from students where email like '%"+email+"%'");
+        return statement.executeQuery("select * from students where email like '"+email+"'");
     }
 
-    public Voter buildVoter(int ID) throws SQLException{
-        Voter voter = new Voter();
-        resultSet = getVoterData(ID);
-        if(resultSet.next()){
-            voter.setID(ID);
-            voter.setFname(resultSet.getString("fname"));
-            voter.setLname(resultSet.getString("lname"));
-            voter.setEmail(resultSet.getString("email"));
-            voter.setVoted(resultSet.getBoolean("voted"));
-        }
-        return voter;
-    }
+
 
     public Voter buildVoter (String email) throws SQLException{
         Voter voter = new Voter();

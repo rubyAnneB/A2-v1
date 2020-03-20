@@ -8,7 +8,7 @@ public class Voter {
     private String email;
     private String password;
     private boolean voted;
-    //TODO:password and verification need to be implemented
+
 
     public Voter(){
         this (0,"","","",true);
@@ -56,6 +56,10 @@ public class Voter {
     public String getFullName(){
         return lname+", "+fname;
     }
+
+    public Boolean getVoted(){return voted;}
+
+    public Boolean isValid(){return id!=0;}
 
 
 
