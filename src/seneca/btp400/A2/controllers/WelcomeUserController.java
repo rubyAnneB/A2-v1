@@ -16,6 +16,7 @@ import seneca.btp400.A2.model.Voter;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 /**
@@ -52,15 +53,23 @@ public class WelcomeUserController implements Initializable {
      * @param event
      * @throws IOException
      */
-    public void  changetoVotingScreen(ActionEvent event) throws IOException {
+    public void changetoVotingScreen(ActionEvent event) throws IOException, SQLException {
         if(agreeChckbx.isSelected()){
-            Parent vote = FXMLLoader.load(getClass().getResource("../resources/fxml/Vote.fxml"));
-            Scene voteScene = new Scene(vote);
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../resources/fxml/Vote.fxml"));
+            Parent vote = loader.load();
 
-            //get stage information
-            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene voteScene= new Scene(vote);
+
+            //Access controller
+            VoteController controller = loader.getController();
+            controller.setVoter(voter.getId());
+
+            Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(voteScene);
             window.show();
+
+
 
         }else{
             alertLbl.setText("Please check the box");
