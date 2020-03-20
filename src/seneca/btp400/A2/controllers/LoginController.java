@@ -54,8 +54,8 @@ public class LoginController implements Initializable {
 
         //access controller to access method to initialize its voter object
         WelcomeUserController controller = loader.getController();
-        //TODO:WRite the method to initialize the voter object
-        //controller.initData
+        controller.initData(voter);
+        voter=null;
 
         //get stage information
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -88,13 +88,15 @@ public class LoginController implements Initializable {
         }
 
 
-
-
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        db = new dbAccessObj();
+        try {
+            db = new dbAccessObj();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

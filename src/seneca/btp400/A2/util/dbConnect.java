@@ -9,21 +9,21 @@ import java.sql.*;
 public class dbConnect {
 
     private Connection connection;
-    private Statement statement; // consider just returning  a connection
 
-    //rewrite this so that you can return a connection instead ?
-    public dbConnect(){
+
+    public Connection getConnection(){
         try{
             connection=  DriverManager.getConnection("jdbc:mysql://localhost:3306/a2votingapp?serverTimezone=UTC","root","abcd");
-            statement= connection.createStatement();
+
         }catch(SQLException err){
             System.out.println("There was an error in connecting to the database");
             err.printStackTrace();
         }
+
+        return connection;
+
+
     }
 
-    public Statement getStatement(){
-        return statement;
-    }
 
 }

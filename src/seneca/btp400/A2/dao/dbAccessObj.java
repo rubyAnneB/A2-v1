@@ -15,14 +15,11 @@ public class dbAccessObj {
     private Statement statement;//review what this is
 
 
-    public dbAccessObj(){
+    public dbAccessObj() throws SQLException {
         db = new dbConnect();
-        statement = db.getStatement();
+        statement = db.getConnection().createStatement();
     }
 
-    public ResultSet getVoterData(int ID) throws SQLException {
-        return statement.executeQuery("select * from students where idStudent ="+ID);
-    }
 
     public ResultSet getVoterData (String email) throws SQLException{
         return statement.executeQuery("select * from students where email like '"+email+"'");
@@ -44,43 +41,7 @@ public class dbAccessObj {
         return voter;
     }
 
-    public String getFullName(int ID){
-        String result = "Student not found";
 
-        try{
-            resultSet= getVoterData(ID);
-            if(resultSet.next()){
-                result = resultSet.getString("lname")+ ", "+ resultSet.getString("fname");
-            }
-        }catch (SQLException err){
-            System.out.println("Error in the getFullName");
-            err.printStackTrace();
-        }
-
-        return result;
-    }
-
-    /**
-     *
-     * @param ID id of the student voting
-     * @return whether the student with ID has voted or not, if student is not found, will return true
-     */
-    public boolean getVoted(int ID){
-        boolean result= true;
-        try{
-            resultSet= getVoterData(ID);
-            if(resultSet.next()){
-                result = resultSet.getBoolean("voted");
-            }else{
-                System.out.println("Student not found");
-            }
-
-        } catch (SQLException e) {
-            System.out.println("Error has occured in Voted method");
-            e.printStackTrace();
-        }
-        return result;
-    }
 
     //TODO: get all candidate names
     /*public String[] getCandidateNames(){

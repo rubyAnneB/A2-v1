@@ -54,7 +54,7 @@ public class Voter {
         return password;
     }
     public String getFullName(){
-        return lname+", "+fname;
+        return fname+ " "+lname;
     }
 
     public Boolean getVoted(){return voted;}
