@@ -52,7 +52,7 @@ public class WelcomeUserController implements Initializable {
      * @param event
      * @throws IOException
      */
-    public void changetoVotingScreen(ActionEvent event) throws IOException {
+    public void  changetoVotingScreen(ActionEvent event) throws IOException {
         if(agreeChckbx.isSelected()){
             Parent vote = FXMLLoader.load(getClass().getResource("../resources/fxml/Vote.fxml"));
             Scene voteScene = new Scene(vote);

@@ -9,6 +9,8 @@ import javafx.stage.Stage;
 import seneca.btp400.A2.dao.dbAccessObj;
 import seneca.btp400.A2.model.Voter;
 
+import java.sql.ResultSet;
+
 /**
  * @author Ruby Anne Bautista
  * @since 2020-03-18
@@ -27,6 +29,12 @@ public class Main extends Application {
 
         dbAccessObj db = new dbAccessObj();
         db.AddVote(39717);
+
+        ResultSet r = db.getCandidates();
+        while (r.next()){
+            System.out.println(r.getString("fname"));
+        }
+
 
         primaryStage.show();
     }

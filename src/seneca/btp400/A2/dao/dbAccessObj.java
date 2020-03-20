@@ -47,6 +47,10 @@ public class dbAccessObj {
         statement.execute("update candidates set votes=votes+1 where idCandidate ="+ID);
     }
 
+    public ResultSet getCandidates () throws SQLException{
+        return statement.executeQuery("Select idCandidate, fname, lname from candidates;");
+    }
+
 
 
 
