@@ -26,7 +26,6 @@ public class dbAccessObj {
     }
 
 
-
     public Voter buildVoter (String email) throws SQLException{
         Voter voter = new Voter();
         resultSet = getVoterData(email);
@@ -41,22 +40,14 @@ public class dbAccessObj {
         return voter;
     }
 
+    public void AddVote(int ID) throws SQLException {
+
+        statement.execute("update candidates set votes=votes+1 where idCandidate ="+ID);
 
 
-    //TODO: get all candidate names
-    /*public String[] getCandidateNames(){
-        try{
-            resultSet=statement.executeQuery("select * from candidates");
-
-        } catch (SQLException e) {
-            System.out.println("Error in getCandidateNames");
-            e.printStackTrace();
-        }
-        return
     }
-*/
 
-    //add votes to candidate
+
 
 
 }
