@@ -23,6 +23,7 @@ public class ThankYouScreenController implements Initializable {
     @FXML
     Button homebtn;
 
+    //TODO:See if there is a way to delay scene so that it automatically changes scenes after set time
     public void changeWelcomeScene (ActionEvent event) throws IOException {
         Parent welcome = FXMLLoader.load(getClass().getResource("../resources/fxml/Welcome.fxml"));
         Scene welcomeScene = new Scene(welcome);
