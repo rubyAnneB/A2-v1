@@ -1,6 +1,6 @@
 package seneca.btp400.A2.controllers;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,11 +18,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.sql.ResultSet;
 import seneca.btp400.A2.dao.dbAccessObj;
 import seneca.btp400.A2.model.Voter;
 
-
+/**
+ * @author Ruby Anne Bautista
+ * @since 2020-03-19
+ * @version 1.0
+ *
+ * Controller for the login scene. Takes care of the authentication process.
+ */
 public class LoginController implements Initializable {
 
     @FXML Button backBtn;
@@ -33,6 +38,11 @@ public class LoginController implements Initializable {
     dbAccessObj db;
     Voter voter;
 
+    /**
+     * On click, returns to the welcome scene
+     * @param event Click
+     * @throws IOException
+     */
     @FXML
     private void BackbtnAction(ActionEvent event) throws IOException {
         voter = null;
@@ -45,14 +55,20 @@ public class LoginController implements Initializable {
         window.show();
     }
 
+    /**
+     * Moves the user to the welcome user scene
+     * @param event
+     * @throws IOException
+     */
     private void welcomeUserSceneChange (ActionEvent event) throws IOException{
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../resources/fxml/WelcomeUser.fxml"));
         Parent welcomeUser= loader.load();
 
         Scene welcomeUserScene = new Scene(welcomeUser);
 
-        //access controller to access method to initialize its voter object
+        //access controller to access method to initialize its voter object-passing info from scene to scene -R
         WelcomeUserController controller = loader.getController();
         controller.initData(voter);
         voter=null;
@@ -64,6 +80,12 @@ public class LoginController implements Initializable {
 
     }
 
+    /**
+     * Performs authentication process if passed moves user to the welcomeUser scene
+     * @param event
+     * @throws IOException
+     * @throws SQLException
+     */
     @FXML //TODO: do more research on user verification
     private void LoginAction(ActionEvent event) throws IOException, SQLException {
         String email = emailTxtfld.getText();
@@ -90,6 +112,17 @@ public class LoginController implements Initializable {
 
     }
 
+
+    /**
+     * Clears the alert, email and password input
+     */
+    @FXML
+    public void clearMessage() {
+        message.setText("");
+        emailTxtfld.setText("");
+        passwordField.setText("");
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -99,10 +132,5 @@ public class LoginController implements Initializable {
         }
     }
 
-    @FXML
-    public void clearMessage() {
-        message.setText("");
-        emailTxtfld.setText("");
-        passwordField.setText("");
-    }
+
 }

@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 public class VoteController implements Initializable {
 
     //TODO: Learn how to add components to the scene dynamically- so that you can add radio buttons depending on how many candidates are sent
+    //Create a list of radio buttons
 
 
 

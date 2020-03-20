@@ -18,19 +18,27 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * @author Ruby Anne Bautista
+ * @since 2020-03-20
+ * Confirms that the user is who they are and informs of the rules related to voting
+ * asks for user to check box declaring that they understand the rules before moving to Voting scene
+ * gives option to return back to Welcome Page
+ */
 public class WelcomeUserController implements Initializable {
 
     Voter voter;
-    @FXML
-    Label welcomeMessageLbl;
+    @FXML Label welcomeMessageLbl;
     @FXML Label rulesLbl;
-    @FXML
-    CheckBox agreeChckbx;
-    @FXML
-    Button continueBtn;
+    @FXML CheckBox agreeChckbx;
+    @FXML Button continueBtn;
     @FXML Label alertLbl;
     @FXML Button cancelBtn;
 
+    /**
+     * Creates the voter object based on the passed information
+     * @param voter the voter to be welcomed
+     */
     public void initData(Voter voter){
         this.voter= voter;
        welcomeMessageLbl.setText("Welcome, "+ this.voter.getFullName());
@@ -38,6 +46,12 @@ public class WelcomeUserController implements Initializable {
 
     }
 
+    /**
+     * Moves voter into the voting scene if they have checked the box indicating the have read and understand the rules else
+     * alerts user to check the box
+     * @param event
+     * @throws IOException
+     */
     public void  changetoVotingScreen(ActionEvent event) throws IOException {
         if(agreeChckbx.isSelected()){
             Parent vote = FXMLLoader.load(getClass().getResource("../resources/fxml/Vote.fxml"));
@@ -53,6 +67,11 @@ public class WelcomeUserController implements Initializable {
         }
     }
 
+    /**
+     * Cancels the voting operation and moves the user back to the welcome page
+     * @param event
+     * @throws IOException
+     */
     public void cancelVote (ActionEvent event) throws IOException{
         voter = null;
         Parent welcome = FXMLLoader.load(getClass().getResource("../resources/fxml/Welcome.fxml"));
@@ -63,7 +82,6 @@ public class WelcomeUserController implements Initializable {
         window.setScene(welcomeScene);
         window.show();
     }
-
 
 
     @Override

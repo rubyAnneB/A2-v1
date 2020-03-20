@@ -9,6 +9,12 @@ import javafx.stage.Stage;
 import seneca.btp400.A2.dao.dbAccessObj;
 import seneca.btp400.A2.model.Voter;
 
+/**
+ * @author Ruby Anne Bautista
+ * @since 2020-03-18
+ * @version 1.0
+ * Launches the welcome screen
+ */
 public class Main extends Application {
 
 

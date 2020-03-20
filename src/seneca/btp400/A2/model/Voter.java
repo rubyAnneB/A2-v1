@@ -1,5 +1,11 @@
 package seneca.btp400.A2.model;
 
+/**
+ * Voter model- represents one row in the students table
+ * @author Ruby Anne Bautista
+ * @since 2020-03-18
+ * @version 1.0
+ */
 public class Voter {
 
     private int id;
