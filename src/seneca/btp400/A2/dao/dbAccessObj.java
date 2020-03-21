@@ -47,10 +47,20 @@ public class dbAccessObj {
         statement.execute("update candidates set votes=votes+1 where idCandidate ="+ID);
     }
 
+    /**
+     *
+     * @return All Candidate's id, first name and last name
+     * @throws SQLException
+     */
     public ResultSet getCandidates () throws SQLException{
         return statement.executeQuery("Select idCandidate, fname, lname from candidates;");
     }
 
+    /**
+     * Changes voter's status to true
+     * @param ID
+     * @throws SQLException
+     */
     public void setVotedTrue(int ID) throws SQLException{
         statement.execute("update students set voted = true where idStudent ="+ ID);
     }

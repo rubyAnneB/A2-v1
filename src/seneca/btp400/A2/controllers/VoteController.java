@@ -19,8 +19,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * @author Ruby Anne Bautista
+ * @since 2020-03-20
+ * @version 1.0
+ *Generates radiobuttons for each candidate and put them on screen. Takes in user input
+ * for their vote.
+ */
+
 public class VoteController implements Initializable {
 
+    /**
+     * Associates the ToggleButton with the ID of the candidate
+     */
     static class CandidateToggleButton extends RadioButton {
         int ID;
         CandidateToggleButton(ToggleGroup c , String name, int ID){
@@ -44,10 +55,18 @@ public class VoteController implements Initializable {
     int voterID;
 
 
+    //called from the previous screen to pass information
     public void setVoter(int voterID){
         this.voterID = voterID;
     }
 
+    /**
+     * Moves user to the ConfirmVoteScene
+     * @param event Click
+     * @param candidateID candidate the was voted for
+     * @param candidateName name of candidate voted for
+     * @throws IOException
+     */
     public void changeConfirmVoteScene(ActionEvent event, int candidateID,String candidateName) throws IOException {
 
         FXMLLoader loader = new FXMLLoader();
@@ -65,16 +84,25 @@ public class VoteController implements Initializable {
         window.show();
 
     }
+
+    /**
+     * Checks if one of the candidates has been selected. If true, moves user to the confirmation scene else gives user warning
+     * @param event Vote button is clicked
+     * @throws IOException
+     */
     public void Vote(ActionEvent event) throws IOException {
         CandidateToggleButton cid = (CandidateToggleButton) candidateToggleGrp.getSelectedToggle();
         if(cid!=null){
-            System.out.println(cid.ID);
             changeConfirmVoteScene(event, cid.ID,cid.getText());
         }else{
             warning.setText("Please choose a candidate");
         }
     }
 
+    /**
+     * Get Candidates from the database and generates a CandidateToggleButton for them
+     * @throws SQLException
+     */
     public void getCandidatesS() throws SQLException {
         ResultSet rs = db.getCandidates();
 
@@ -89,7 +117,9 @@ public class VoteController implements Initializable {
     }
 
 
-
+    /**
+     * Places all generated buttons on the scene
+     */
     public void putButtonsonScene(){
         votingChoices.getChildren().addAll(candidates);
     }

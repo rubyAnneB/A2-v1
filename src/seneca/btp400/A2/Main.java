@@ -27,14 +27,6 @@ public class Main extends Application {
         primaryStage.setTitle("Assignment 2");
         primaryStage.setScene(new Scene(root));
 
-        dbAccessObj db = new dbAccessObj();
-        db.AddVote(39717);
-
-        ResultSet r = db.getCandidates();
-        while (r.next()){
-            System.out.println(r.getString("fname"));
-        }
-
         primaryStage.show();
     }
 

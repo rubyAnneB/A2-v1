@@ -55,6 +55,7 @@ public class WelcomeUserController implements Initializable {
      */
     public void changetoVotingScreen(ActionEvent event) throws IOException, SQLException {
         if(agreeChckbx.isSelected()){
+            voter = null;
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../resources/fxml/Vote.fxml"));
             Parent vote = loader.load();

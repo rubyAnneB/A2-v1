@@ -18,6 +18,12 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * @author Ruby Anne Bautista
+ * @since 2020-03-20
+ * @version 1.0
+ *
+ */
 public class ConfirmVoteController implements Initializable {
 
     int voterId;
@@ -31,9 +37,12 @@ public class ConfirmVoteController implements Initializable {
     Button CancelBtn;
 
 
-
-
-
+    /**
+     * Takes in information passed from previous scene
+     * @param voterId
+     * @param candidateID
+     * @param candidateName
+     */
     public void initData(int voterId, int candidateID, String candidateName){
         this.voterId =voterId;
         this.candidateId=candidateID;
@@ -42,10 +51,19 @@ public class ConfirmVoteController implements Initializable {
         setVotedCandidatelbl();
     }
 
+    /**
+     * sets the label for the confirmVote scene to display selected candidate
+     */
     public void setVotedCandidatelbl(){
         votedCandidatelbl.setText(candidateName);
     }
 
+    /**
+     * Sets the voter's voted value to true and increments the selected candidate
+     * @param event mouse click confirm button
+     * @throws SQLException
+     * @throws IOException
+     */
     public void confirmVote(ActionEvent event) throws SQLException, IOException {
         db.setVotedTrue(voterId);
         db.AddVote(candidateId);
@@ -53,6 +71,11 @@ public class ConfirmVoteController implements Initializable {
         changeThankYouScene(event);
     }
 
+    /**
+     * Moves user to Thank you scene
+     * @param event
+     * @throws IOException
+     */
     public void changeThankYouScene(ActionEvent event) throws IOException {
         Parent thanks = FXMLLoader.load(getClass().getResource("../resources/fxml/ThankYou.fxml"));
         Scene thanksScene = new Scene(thanks);
@@ -63,7 +86,12 @@ public class ConfirmVoteController implements Initializable {
         window.show();
     }
 
-    public void changeWelcomeScene (ActionEvent event) throws IOException {
+    /**
+     * Moves user back to the welcome scene and cancels vote
+     * @param event
+     * @throws IOException
+     */
+    public void cancelVote (ActionEvent event) throws IOException {
         Parent welcome = FXMLLoader.load(getClass().getResource("../resources/fxml/Welcome.fxml"));
         Scene welcomeScene = new Scene(welcome);
 
@@ -73,9 +101,7 @@ public class ConfirmVoteController implements Initializable {
         window.show();
     }
 
-    public void cancelVote(ActionEvent event) throws IOException {
-        changeWelcomeScene(event);
-    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
