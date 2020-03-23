@@ -43,6 +43,18 @@ public class WelcomeController implements Initializable {
     }
 
 
+    //add new voter- for Daniel
+    //TODO: Implement method that activated upon pressing 'Add new voter'
+    //This is will need new table in database that contains users with this privilege
+    //Todo: add table in database for admins and managers- people who can edit the student info
+    //look in dao -R
+    private void addNewVoter(ActionEvent event){
+        //change the page into the addNewVoter
+
+
+    }
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

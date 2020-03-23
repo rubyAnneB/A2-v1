@@ -65,6 +65,11 @@ public class dbAccessObj {
         statement.execute("update students set voted = true where idStudent ="+ ID);
     }
 
+    //Implement method that
+    public void NewVoter() throws SQLException{
+
+    }
+
 
 
 
