@@ -65,13 +65,16 @@ public class dbAccessObj {
         statement.execute("update students set voted = true where idStudent ="+ ID);
     }
 
-    //Implement method that
+    // add new voter
     public void NewVoter(int pst, String first, String last, String pEmail, String ppass) throws SQLException{
         statement.execute("insert into students (idStudent, fname, lname, email, password, voted)
                           values (" + pst + ", " + "'" + first + "', '" + last + "', '" + "'" + pEmail + "', '" + ppass "','"  + false + ");");
     }
-
-
+    // add new voter, compares user input to databsae
+    public boolean compareVoter(int pst, String first, String last, String pEmail, String ppass) throws SQLException {
+        statement.execute("select * from students where email like " + "'" + pEmail + "' OR fname=" + "'" + first + "' OR ");
+        // need to finish
+    }
 
 
 }
