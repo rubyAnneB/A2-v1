@@ -66,7 +66,7 @@ public class dbAccessObj {
     }
 
     // add new voter
-    public void NewVoter(int pst, String first, String last, String pEmail, String ppass) throws SQLException{
+    public void newVoter(int pst, String first, String last, String pEmail, String ppass) throws SQLException{
         statement.execute("insert into students (idStudent, fname, lname, email, password, voted)
                           values (" + pst + ", " + "'" + first + "', '" + last + "', '" + "'" + pEmail + "', '" + ppass "','"  + false + ");");
     }
