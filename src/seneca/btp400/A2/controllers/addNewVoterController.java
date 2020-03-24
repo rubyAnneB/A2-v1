@@ -12,9 +12,10 @@ import java.util.ResourceBundle;
 public class addNewVoterController  implements Initializable {
     @FXML TextField fnameTyped;
     @FXML TextField lnameTyped;
-  //@FXML TextField stnumTyped;
+    @FXML TextField stnumTyped;
     @FXML TextField emailTyped;
     @FXML PasswordField passTyped;
+    @FXML MenuButton campusSelected;
     
     dbAccessObj db;
     Voter voter;
