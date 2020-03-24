@@ -10,16 +10,43 @@ import java.util.ResourceBundle;
  * displays form for add new voter. Takes info and puts it into the database
  */
 public class addNewVoterController  implements Initializable {
-    @FXML TextField fnameTyped;
-    @FXML TextField lnameTyped;
-    @FXML TextField stnumTyped;
-    @FXML TextField emailTyped;
-    @FXML PasswordField passTyped;
-    @FXML MenuButton campusSelected;
+    @FXML
+    private TextField fnameTyped;
+    
+    @FXML
+    private TextField lnameTyped;
+    
+    @FXML
+    private TextField stnumTyped;
+    
+    @FXML
+    private TextField emailTyped;
+    
+    @FXML
+    private PasswordField passTyped;
+    
+    @FXML
+    private MenuButton campusSelected;   
+    
+    @FXML
+    private Label displayed;
     
     dbAccessObj db;
     Voter voter;
 
+    public void createVoter() throws SQLException {
+        
+        
+        voter = new (0,"","","","",false);
+    }
+    
+    private void SubmitAction(ActionEvent event) throws IOException, SQLException {
+        
+        
+    }
+    
+    
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
