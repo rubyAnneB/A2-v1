@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="seneca.btp400.A2.controllers.addNewVoterController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seneca.btp400.A2.controllers.addNewVoterController">
+   <children>
+      <Text fontSmoothingType="LCD" layoutX="172.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Voter Registration" textAlignment="CENTER" wrappingWidth="255.13671875">
+         <font>
+            <Font name="Cooper Black" size="24.0" />
+         </font>
+      </Text>
+      <TextField layoutX="219.0" layoutY="80.0" text="first name" />
+      <TextField layoutX="219.0" layoutY="117.0" text="last name" />
+      <TextField layoutX="219.0" layoutY="188.0" text="email" />
+      <PasswordField fx:id="passwordField" layoutX="219.0" layoutY="224.0" promptText="password" />
+      <TextField layoutX="219.0" layoutY="151.0" text="student number" />
+      <MenuButton layoutX="219.0" layoutY="260.0" mnemonicParsing="false" text="Campus">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Newnham" />
+          <MenuItem mnemonicParsing="false" text="King" />
+            <MenuItem mnemonicParsing="false" text="Markham" />
+            <MenuItem mnemonicParsing="false" text="Seneca@York" />
+        </items>
+      </MenuButton>
+   </children>
 </AnchorPane>
