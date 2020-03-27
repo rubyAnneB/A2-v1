@@ -21,7 +21,7 @@
             <Font name="Cooper Black" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="AdminBtn" layoutX="365.0" layoutY="280.0" mnemonicParsing="false" text="Admin Log In">
+      <Button fx:id="AdminBtn" layoutX="365.0" layoutY="280.0" mnemonicParsing="false" onAction="#AdminLoginAction" text="Admin Log In">
          <font>
             <Font name="Cooper Black" size="15.0" />
          </font>
