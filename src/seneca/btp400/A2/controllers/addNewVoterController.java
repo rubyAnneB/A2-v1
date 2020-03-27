@@ -11,22 +11,23 @@ import java.util.ResourceBundle;
  */
 public class addNewVoterController  implements Initializable {
     @FXML
-    private TextField fnameTyped;
-    
+    private TextField fnameTyped;   
     @FXML
-    private TextField lnameTyped;
-    
+    private TextField lnameTyped; 
     @FXML
     private TextField stnumTyped;
-    
     @FXML
     private TextField emailTyped;
-    
     @FXML
     private PasswordField passTyped;   
-    
     @FXML
-    private Label displayed;
+    private Label displayed; 
+    @FXML
+    private Button backBtn;
+    @FXML
+    private Button submitBtn;
+    @FXML
+    private Button resetBtn;
     
     dbAccessObj db;
     Voter voter;
@@ -40,11 +41,19 @@ public class addNewVoterController  implements Initializable {
             voter.setPassword(passTyped.getText());
             ResultSet addResult = db.newVoter(stnumTyped.getInt(), fnameTyped.getText(), lnameTyped.getText(), emailTyped.getText(), passTyped.getText());
             if (addResult.next() == true) {
+                displayed.setStyle("-fx-font-weight: bold");
+                displayed.setStyle("-fx-color: green");
+                displayed.setText("New Voter addded successfully!");
                 return true;
             } else {
+                displayed.setStyle("-fx-font-weight: bold");
+                displayed.setStyle("-fx-color: red");
+                displayed.setText("Input Invalid!");
                 return false;
             }
-            
+             displayed.setStyle("-fx-font-weight: bold");
+             displayed.setStyle("-fx-color: red");
+             displayed.setText("Student already registered!");
             
         } else { return false; }
         
