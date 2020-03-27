@@ -72,9 +72,6 @@ public class dbAccessObj {
     }
     // add new voter, compares user input to databsae
     public boolean compareVoter(int pst, String first, String last, String pEmail, String ppass) throws SQLException {
-        statement.execute("select * from students where email like " + "'" + pEmail + "' OR fname=" + "'" + first + "' OR ");
-        // need to finish
+        statement.execute("select * from students where email like '" + pEmail + "' OR fname = '" + first + "' OR lname = '" + last + "' OR idStudent = " + pst + "OR password = '" + ppass + "';");
     }
-
-
 }
