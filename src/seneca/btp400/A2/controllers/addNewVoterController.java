@@ -23,10 +23,7 @@ public class addNewVoterController  implements Initializable {
     private TextField emailTyped;
     
     @FXML
-    private PasswordField passTyped;
-    
-    @FXML
-    private MenuButton campusSelected;   
+    private PasswordField passTyped;   
     
     @FXML
     private Label displayed;
@@ -62,7 +59,15 @@ public class addNewVoterController  implements Initializable {
         }
     }
     
-    
+    @FXML
+    public void clearDisplay() {
+        displayed.setText("");
+        fnameTyped.setText("");
+        lnameTyped.setText("");
+        stnumTyped.setText("");
+        emailTyped.setText("");
+        passTyped.setText("");
+    }
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
