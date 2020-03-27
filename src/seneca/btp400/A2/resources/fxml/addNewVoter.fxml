@@ -20,13 +20,6 @@
       <TextField fx:id="emailTyped" layoutX="219.0" layoutY="188.0" text="email" />
       <PasswordField fx:id="passTyped" layoutX="219.0" layoutY="224.0" promptText="password" />
       <TextField fx:id="stnumTyped" layoutX="219.0" layoutY="151.0" text="student number" />
-      <MenuButton fx:id="campusSelected" layoutX="219.0" layoutY="260.0" mnemonicParsing="false" text="Campus">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Newnham" />
-          <MenuItem mnemonicParsing="false" text="King" />
-            <MenuItem mnemonicParsing="false" text="Markham" />
-            <MenuItem mnemonicParsing="false" text="Seneca@York" />
-        </items>
-      </MenuButton>
+      <Label fx:id="displayed" layoutX="267.0" layoutY="269.0" />
    </children>
 </AnchorPane>
