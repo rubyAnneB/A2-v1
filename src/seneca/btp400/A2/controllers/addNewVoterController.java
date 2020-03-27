@@ -39,7 +39,7 @@ public class addNewVoterController  implements Initializable {
         if (rs.next() == false) {
             voter = new (stnumTyped.getInt(), fnameTyped.getText(), lnameTyped.getText(), emailTyped.getText(), false);
             voter.setPassword(passTyped.getText());
-            ResultSet addResult = db.newVoter(stnumTyped.getInt(), fnameTyped.getText(), lnameTyped.getText(), emailTyped.getText(), passTyped.getText());
+            ResultSet addResult = db.newVoter(stnumTyped.getInt(), emailTyped.getText());
             if (addResult.next() == true) {
                 displayed.setStyle("-fx-font-weight: bold");
                 displayed.setStyle("-fx-color: green");
