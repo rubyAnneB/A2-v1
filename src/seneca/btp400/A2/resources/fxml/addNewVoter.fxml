@@ -15,12 +15,12 @@
             <Font name="Cooper Black" size="24.0" />
          </font>
       </Text>
-      <TextField layoutX="219.0" layoutY="80.0" text="first name" />
-      <TextField layoutX="219.0" layoutY="117.0" text="last name" />
-      <TextField layoutX="219.0" layoutY="188.0" text="email" />
-      <PasswordField fx:id="passwordField" layoutX="219.0" layoutY="224.0" promptText="password" />
-      <TextField layoutX="219.0" layoutY="151.0" text="student number" />
-      <MenuButton layoutX="219.0" layoutY="260.0" mnemonicParsing="false" text="Campus">
+      <TextField fx:id="fnameTyped" layoutX="219.0" layoutY="80.0" text="first name" />
+      <TextField fx:id="lnameTyped" layoutX="219.0" layoutY="117.0" text="last name" />
+      <TextField fx:id="emailTyped" layoutX="219.0" layoutY="188.0" text="email" />
+      <PasswordField fx:id="passTyped" layoutX="219.0" layoutY="224.0" promptText="password" />
+      <TextField fx:id="stnumTyped" layoutX="219.0" layoutY="151.0" text="student number" />
+      <MenuButton fx:id="campusSelected" layoutX="219.0" layoutY="260.0" mnemonicParsing="false" text="Campus">
         <items>
           <MenuItem mnemonicParsing="false" text="Newnham" />
           <MenuItem mnemonicParsing="false" text="King" />
