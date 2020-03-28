@@ -55,7 +55,7 @@ public class WelcomeUserController implements Initializable {
      */
     public void changetoVotingScreen(ActionEvent event) throws IOException, SQLException {
         if(agreeChckbx.isSelected()){
-            voter = null;
+            //voter = null; Caused NullPointerException on line 67
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../resources/fxml/Vote.fxml"));
             Parent vote = loader.load();
@@ -64,7 +64,7 @@ public class WelcomeUserController implements Initializable {
 
             //Access controller
             VoteController controller = loader.getController();
-            //controller.setVoter(voter.getId()); causes NullPointerException because of line 58
+            controller.setVoter(voter.getId());
 
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(voteScene);
