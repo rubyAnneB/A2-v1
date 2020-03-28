@@ -41,7 +41,7 @@ public class WelcomeUserController implements Initializable {
      * @param voter the voter to be welcomed
      */
     public void initData(Voter voter){
-        this.voter= voter;
+        this.voter = voter;
        welcomeMessageLbl.setText("Welcome, "+ this.voter.getFullName());
        agreeChckbx.setText("I, "+this.voter.getFullName()+" have read and understood the above");
 
@@ -64,7 +64,7 @@ public class WelcomeUserController implements Initializable {
 
             //Access controller
             VoteController controller = loader.getController();
-            controller.setVoter(voter.getId());
+            //controller.setVoter(voter.getId()); causes NullPointerException because of line 58
 
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(voteScene);
