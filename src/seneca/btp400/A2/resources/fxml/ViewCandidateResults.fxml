@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -18,5 +19,11 @@
           <TableColumn fx:id="voteCol" minWidth="3.0" prefWidth="68.0" text="Votes" />
         </columns>
       </TableView>
+      <Button fx:id="backBtn" layoutX="58.0" layoutY="329.0" mnemonicParsing="false" onAction="#backtoMenu" text="Back to Menu" />
+      <Label layoutX="139.0" layoutY="50.0" prefHeight="35.0" prefWidth="322.0" style="-fx-font-weight: bold;" text="Current Voting Results">
+         <font>
+            <Font name="Bookman Old Style Bold" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -27,7 +27,6 @@
 		<Button fx:id="backBtn" layoutX="90.0" layoutY="331.0" mnemonicParsing="false" onAction="#BackAction" prefHeight="38.0" prefWidth="103.0" text="Back to Menu" />
 		<Button fx:id="submitBtn" layoutX="232.0" layoutY="312.0" mnemonicParsing="false" onAction="#SubmitAction" prefHeight="48.0" prefWidth="68.0" text="Submit" />
 		<Button fx:id="resetBtn" layoutX="336.0" layoutY="317.0" mnemonicParsing="false" onAction="#clearDisplay" prefHeight="38.0" prefWidth="58.0" text="Reset" />
-      <Label text="Label" />
       <Label layoutX="144.0" layoutY="84.0" text="First Name" />
       <Label layoutX="144.0" layoutY="121.0" text="Last Name" />
       <Label layoutX="144.0" layoutY="155.0" text="Student ID" />

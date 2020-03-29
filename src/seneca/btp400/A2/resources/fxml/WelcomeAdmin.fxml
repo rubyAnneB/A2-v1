@@ -13,22 +13,17 @@
 <!-- This scene confirms that the user is who they say they are and lets 
 	them know about the rules that they are agreeing to -->
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0"
-	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="seneca.btp400.A2.controllers.WelcomeAdmin">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seneca.btp400.A2.controllers.WelcomeAdmin">
 	<children>
 		<AnchorPane />
-		<Label fx:id="welcomeMessageLbl" layoutX="62.0" layoutY="34.0"
-			prefHeight="46.0" prefWidth="476.0" wrapText="true">
+		<Label fx:id="welcomeMessageLbl" layoutX="62.0" layoutY="34.0" prefHeight="46.0" prefWidth="476.0" wrapText="true">
 			<font>
 				<Font name="Cooper Black" size="30.0" />
 			</font>
 		</Label>
-		<Button fx:id="addVoterBtn" layoutX="232.0" layoutY="111.0"
-			mnemonicParsing="false" onAction="#addVoter" text="Add Voter to database" />
-		<Button fx:id="viewCandidates" layoutX="218.0" layoutY="161.0" mnemonicParsing="false"
-			onAction="#getVotingResults" text="View Current Voting Results" />
-		<Button fx:id="logOut" layoutX="135.0" layoutY="256.0" mnemonicParsing="false"
-			prefHeight="36.0" prefWidth="68.0" onAction="#logAdminOut" text="Log Out" />
+		<Button fx:id="addVoterBtn" layoutX="216.0" layoutY="109.0" mnemonicParsing="false" onAction="#addVoter" prefHeight="25.0" prefWidth="190.0" text="Add Voter to database" />
+		<Button fx:id="viewCandidates" layoutX="216.0" layoutY="153.0" mnemonicParsing="false" onAction="#getVotingResults" prefHeight="25.0" prefWidth="190.0" text="View Current Voting Results" />
+		<Button fx:id="logOut" layoutX="135.0" layoutY="256.0" mnemonicParsing="false" onAction="#logAdminOut" prefHeight="36.0" prefWidth="68.0" text="Log Out" />
+      <Button fx:id="changePassword" layoutX="216.0" layoutY="200.0" mnemonicParsing="false" onAction="#passwordCh" prefHeight="25.0" prefWidth="190.0" text="Change Password" />
 	</children>
 </AnchorPane>
