@@ -26,6 +26,7 @@ import java.sql.ResultSet;
  */
 
 import seneca.btp400.A2.dao.dbAccessObj;
+import seneca.btp400.A2.model.Administrator;
 import seneca.btp400.A2.model.Voter;
 public class AddNewVoterController  implements Initializable {
     @FXML
@@ -49,7 +50,10 @@ public class AddNewVoterController  implements Initializable {
     
     dbAccessObj db;
     Voter voter;
-
+    Administrator admin;
+	public void setAdmin(Administrator admin) {
+		this.admin = admin;
+	}
 	public boolean createVoter() throws SQLException {
 		int studentNumber = Integer.parseInt(stnumTyped.getText());
 		ResultSet rs = db.compareVoter(studentNumber, emailTyped.getText()); // checks if student already exists in
@@ -88,13 +92,18 @@ public class AddNewVoterController  implements Initializable {
     
     @FXML
     private void BackAction(ActionEvent event) throws IOException, SQLException {
-    	Parent welcome = FXMLLoader.load(getClass().getResource("../resources/fxml/WelcomeAdmin.fxml"));
-        Scene welcomeScene = new Scene(welcome);
+    	FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("../resources/fxml/WelcomeAdmin.fxml"));
+		Parent menu = loader.load();
 
-        //get stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(welcomeScene);
-        window.show();
+		Scene voteScene = new Scene(menu);
+
+		// Access controller
+		WelcomeAdmin controller = loader.getController();
+		controller.initData(admin);
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(voteScene);
+		window.show();
     }
     
     

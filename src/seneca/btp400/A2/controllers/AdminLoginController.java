@@ -63,7 +63,7 @@ public class AdminLoginController implements Initializable {
 	
 	
 	@FXML
-	private void loginClick (ActionEvent event)throws IOException, SQLException {
+	private void loginClick (ActionEvent event) throws IOException, SQLException {
 		buildAdministrator(emailTyped.getText());
 		
 		displayMessage.setStyle("-fx-font-weight: bold");
@@ -98,7 +98,6 @@ public class AdminLoginController implements Initializable {
 		window.show();
 	}
 	
-	@FXML
 	private void buildAdministrator (String email) throws SQLException {
 		admin = new Administrator();
 		ResultSet resultSet = db.getAdmin(email);

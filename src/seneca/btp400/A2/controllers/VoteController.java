@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import seneca.btp400.A2.dao.dbAccessObj;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,7 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
+import seneca.btp400.A2.dao.dbAccessObj;
 /**
  * @author Ruby Anne Bautista
  * @since 2020-03-20

@@ -23,6 +23,8 @@ public class WelcomeAdmin implements Initializable {
 	@FXML
 	Button addVoterBtn;
 	@FXML
+	Button changePassword;
+	@FXML
 	Label welcomeMessageLbl;
 	@FXML
 	Button logOut;
@@ -46,24 +48,53 @@ public class WelcomeAdmin implements Initializable {
 	
 	@FXML
 	private void addVoter (ActionEvent event) throws IOException {
-		Parent welcome = FXMLLoader.load(getClass().getResource("../resources/fxml/addNewVoter.fxml"));
-        Scene welcomeScene = new Scene(welcome);
+        FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("../resources/fxml/addNewVoter.fxml"));
+		Parent welcomeAdmin = loader.load();
 
-        //get stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(welcomeScene);
-        window.show();
+		Scene welcomeAdminScene = new Scene(welcomeAdmin);
+
+		AddNewVoterController controller = loader.getController();
+		controller.setAdmin(admin);
+		admin = null;
+
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(welcomeAdminScene);
+		window.show();
 	}
 	
 	@FXML
 	private void getVotingResults (ActionEvent event) throws IOException {
-		Parent welcome = FXMLLoader.load(getClass().getResource("../resources/fxml/ViewCandidateResults.fxml"));
-        Scene welcomeScene = new Scene(welcome);
+        FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("../resources/fxml/ViewCandidateResults.fxml"));
+		Parent welcomeAdmin = loader.load();
 
-        //get stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(welcomeScene);
-        window.show();
+		Scene welcomeAdminScene = new Scene(welcomeAdmin);
+
+		ViewCandidateResults controller = loader.getController();
+		controller.setAdmin(admin);
+		admin = null;
+
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(welcomeAdminScene);
+		window.show();
+	}
+	
+	@FXML
+	private void passwordCh (ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("../resources/fxml/AdminChangePassword.fxml"));
+		Parent welcomeAdmin = loader.load();
+
+		Scene scene = new Scene(welcomeAdmin);
+
+		AdminChangePassword controller = loader.getController();
+		controller.setAdmin(admin);
+		admin = null;
+
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(scene);
+		window.show();
 	}
 	
 	@Override

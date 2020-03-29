@@ -5,19 +5,32 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import java.util.ArrayList;
+import javafx.scene.control.Button;
+import seneca.btp400.A2.model.Administrator;
 import seneca.btp400.A2.model.Candidate;
 
 import seneca.btp400.A2.dao.dbAccessObj;
 
 public class ViewCandidateResults implements Initializable {
+	@FXML
+	Button backBtn;
+	
+	
 	@FXML
 	private TableView<Candidate> table;
 	@FXML
@@ -31,7 +44,10 @@ public class ViewCandidateResults implements Initializable {
 
 	dbAccessObj db;
 	Candidate cand;
-
+	Administrator admin;
+	public void setAdmin(Administrator admin) {
+		this.admin = admin;
+	}
 	@FXML
 	public void getCandidates() throws SQLException {
 		cand = null;
@@ -42,6 +58,22 @@ public class ViewCandidateResults implements Initializable {
 			people.add(cand);
 			cand = null;
 		}
+	}
+	
+	@FXML
+	public void backtoMenu(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("../resources/fxml/WelcomeAdmin.fxml"));
+		Parent menu = loader.load();
+
+		Scene voteScene = new Scene(menu);
+
+		// Access controller
+		WelcomeAdmin controller = loader.getController();
+		controller.initData(admin);
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(voteScene);
+		window.show();
 	}
 
 	@Override
