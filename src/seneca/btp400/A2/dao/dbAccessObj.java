@@ -4,9 +4,9 @@ import java.sql.*;
 import seneca.btp400.A2.util.dbConnect;
 
 /**
- * @author Ruby Anne Bautista
+ * @author Ruby Anne Bautista, Daniel Derich
  * @since 2020-03-21
- * @version 1.0
+ * @version 2.0
  *
  * Takes care of any operations that must be performed on the database such as
  * retrieving voter/student information
@@ -87,5 +87,9 @@ public class dbAccessObj {
 
 	public ResultSet getAdmin(String email) throws SQLException {
 		return statement.executeQuery("select * from admins where email like '" + email + "';");
+	}
+	
+	public void setNewAdminPassword(int pId, String newPass) throws SQLException {
+		statement.execute("update admins set password ='" + newPass + "' where idAdmin =" + pId + ";");
 	}
 }
