@@ -41,7 +41,7 @@ public class WelcomeUserController implements Initializable {
      * @param voter the voter to be welcomed
      */
     public void initData(Voter voter){
-        this.voter = voter;
+        this.voter= voter;
        welcomeMessageLbl.setText("Welcome, "+ this.voter.getFullName());
        agreeChckbx.setText("I, "+this.voter.getFullName()+" have read and understood the above");
 
@@ -53,29 +53,25 @@ public class WelcomeUserController implements Initializable {
      * @param event
      * @throws IOException
      */
-    public void changetoVotingScreen(ActionEvent event) throws IOException, SQLException {
-        if(agreeChckbx.isSelected()){
-            //voter = null; Caused NullPointerException on line 67
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../resources/fxml/Vote.fxml"));
-            Parent vote = loader.load();
+	public void changetoVotingScreen(ActionEvent event) throws IOException, SQLException {
+		if (agreeChckbx.isSelected()) {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("../resources/fxml/Vote.fxml"));
+			Parent vote = loader.load();
 
-            Scene voteScene= new Scene(vote);
+			Scene voteScene = new Scene(vote);
 
-            //Access controller
-            VoteController controller = loader.getController();
-            controller.setVoter(voter.getId());
+			// Access controller
+			VoteController controller = loader.getController();
+			controller.setVoter(voter.getId());
+			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			window.setScene(voteScene);
+			window.show();
 
-            Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            window.setScene(voteScene);
-            window.show();
-
-
-
-        }else{
-            alertLbl.setText("Please check the box");
-        }
-    }
+		} else {
+			alertLbl.setText("Please check the box");
+		}
+	}
 
     /**
      * Cancels the voting operation and moves the user back to the welcome page

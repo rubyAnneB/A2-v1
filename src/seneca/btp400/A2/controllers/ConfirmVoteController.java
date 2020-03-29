@@ -12,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import seneca.btp400.A2.dao.dbAccessObj;
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -26,90 +25,108 @@ import java.util.ResourceBundle;
  */
 public class ConfirmVoteController implements Initializable {
 
-    int voterId;
-    int candidateId;
-    String candidateName;
-    dbAccessObj db;
-    @FXML
-    Label votedCandidatelbl;
-    @FXML Button confirmBtn;
-    @FXML
-    Button CancelBtn;
+	int voterId;
+	int candidateId;
+	String candidateName;
+	dbAccessObj db;
+	@FXML
+	Label votedCandidatelbl;
+	@FXML
+	Button confirmBtn;
+	@FXML
+	Button CancelBtn;
+	@FXML
+	Button voteChange;
+	/**
+	 * Takes in information passed from previous scene
+	 * 
+	 * @param voterId
+	 * @param candidateID
+	 * @param candidateName
+	 */
+	public void initData(int voterId, int candidateID, String candidateName) {
+		this.voterId = voterId;
+		this.candidateId = candidateID;
+		this.candidateName = candidateName;
 
+		setVotedCandidatelbl();
+	}
 
-    /**
-     * Takes in information passed from previous scene
-     * @param voterId
-     * @param candidateID
-     * @param candidateName
-     */
-    public void initData(int voterId, int candidateID, String candidateName){
-        this.voterId =voterId;
-        this.candidateId=candidateID;
-        this.candidateName = candidateName;
+	/**
+	 * sets the label for the confirmVote scene to display selected candidate
+	 */
+	public void setVotedCandidatelbl() {
+		votedCandidatelbl.setText(candidateName);
+	}
 
-        setVotedCandidatelbl();
-    }
+	/**
+	 * Sets the voter's voted value to true and increments the selected candidate
+	 * 
+	 * @param event mouse click confirm button
+	 * @throws SQLException
+	 * @throws IOException
+	 */
+	public void confirmVote(ActionEvent event) throws SQLException, IOException {
+		db.setVotedTrue(voterId);
+		db.AddVote(candidateId);
+		// move to thank you screen
+		changeThankYouScene(event);
+	}
 
-    /**
-     * sets the label for the confirmVote scene to display selected candidate
-     */
-    public void setVotedCandidatelbl(){
-        votedCandidatelbl.setText(candidateName);
-    }
+	/**
+	 * Moves user to Thank you scene
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
+	public void changeThankYouScene(ActionEvent event) throws IOException {
+		Parent thanks = FXMLLoader.load(getClass().getResource("../resources/fxml/ThankYou.fxml"));
+		Scene thanksScene = new Scene(thanks);
 
-    /**
-     * Sets the voter's voted value to true and increments the selected candidate
-     * @param event mouse click confirm button
-     * @throws SQLException
-     * @throws IOException
-     */
-    public void confirmVote(ActionEvent event) throws SQLException, IOException {
-        db.setVotedTrue(voterId);
-        db.AddVote(candidateId);
-        //move to thank you screen
-        changeThankYouScene(event);
-    }
+		// get stage information
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(thanksScene);
+		window.show();
+	}
 
-    /**
-     * Moves user to Thank you scene
-     * @param event
-     * @throws IOException
-     */
-    public void changeThankYouScene(ActionEvent event) throws IOException {
-        Parent thanks = FXMLLoader.load(getClass().getResource("../resources/fxml/ThankYou.fxml"));
-        Scene thanksScene = new Scene(thanks);
+	/**
+	 * Moves user back to the welcome scene and cancels vote
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
+	public void cancelVote(ActionEvent event) throws IOException {
+		Parent welcome = FXMLLoader.load(getClass().getResource("../resources/fxml/Welcome.fxml"));
+		Scene welcomeScene = new Scene(welcome);
 
-        //get stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(thanksScene);
-        window.show();
-    }
+		// get stage information
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(welcomeScene);
+		window.show();
+	}
+	
+	// Added by Daniel
+	public void changeVote(ActionEvent event) throws IOException, SQLException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("../resources/fxml/Vote.fxml"));
+		Parent vote = loader.load();
 
-    /**
-     * Moves user back to the welcome scene and cancels vote
-     * @param event
-     * @throws IOException
-     */
-    public void cancelVote (ActionEvent event) throws IOException {
-        Parent welcome = FXMLLoader.load(getClass().getResource("../resources/fxml/Welcome.fxml"));
-        Scene welcomeScene = new Scene(welcome);
+		Scene voteScene = new Scene(vote);
 
-        //get stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(welcomeScene);
-        window.show();
-    }
+		VoteController controller = loader.getController();
+		controller.setVoter(voterId); // 
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(voteScene);
+		window.show();
+	}
 
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        try {
-            db = new dbAccessObj();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		try {
+			db = new dbAccessObj();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

@@ -125,7 +125,7 @@ public class LoginController implements Initializable {
         ResultSet resultSet = db.getVoterData(email);
 
         if(resultSet.next()){
-            voter.setID(resultSet.getInt("idStudent"));
+            voter.setId(resultSet.getInt("idStudent"));
             voter.setFname(resultSet.getString("fname"));
             voter.setLname(resultSet.getString("lname"));
             voter.setEmail(email);
