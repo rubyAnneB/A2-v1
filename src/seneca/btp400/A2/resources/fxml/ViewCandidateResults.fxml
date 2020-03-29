@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seneca.btp400.A2.controllers.ViewCandidateResults">
+   <children>
+      <TableView fx:id="table" layoutX="110.0" layoutY="100.0" prefHeight="200.0" prefWidth="380.0">
+        <columns>
+          <TableColumn fx:id="fnameCol" prefWidth="159.0" text="First Name" />
+            <TableColumn fx:id="lnameCol" prefWidth="150.0" text="Last Name" />
+          <TableColumn fx:id="voteCol" minWidth="3.0" prefWidth="68.0" text="Votes" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

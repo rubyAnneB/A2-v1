@@ -6,13 +6,18 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seneca.btp400.A2.controllers.ThankYouScreenController">
-   <children>
-      <Label layoutX="170.0" layoutY="160.0" text="Thank you for Voting">
-         <font>
-            <Font size="28.0" />
-         </font>
-      </Label>
-      <Button fx:id="homebtn" layoutX="269.0" layoutY="289.0" mnemonicParsing="false" onAction="#changeWelcomeScene" text="Home" />
-   </children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0"
+	xmlns="http://javafx.com/javafx/8.0.171"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="seneca.btp400.A2.controllers.ThankYouScreenController">
+	<children>
+		<Label layoutX="170.0" layoutY="160.0"
+			text="Thank you for Voting">
+			<font>
+				<Font size="28.0" />
+			</font>
+		</Label>
+		<Button fx:id="homebtn" layoutX="269.0" layoutY="289.0"
+			mnemonicParsing="false" onAction="#changeWelcomeScene" text="Home" />
+	</children>
 </AnchorPane>
