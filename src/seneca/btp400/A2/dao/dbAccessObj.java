@@ -1,7 +1,6 @@
 package seneca.btp400.A2.dao;
 import java.sql.*;
 
-import seneca.btp400.A2.model.Voter;
 import seneca.btp400.A2.util.dbConnect;
 
 /**
@@ -65,13 +64,28 @@ public class dbAccessObj {
         statement.execute("update students set voted = true where idStudent ="+ ID);
     }
 
-    // add new voter
-    public void newVoter(int pst, String first, String last, String pEmail, String ppass) throws SQLException{
-        statement.execute("insert into students (idStudent, fname, lname, email, password, voted)
-                          values (" + pst + ", " + "'" + first + "', '" + last + "', '" + "'" + pEmail + "', '" + ppass "','"  + false + ");");
-    }
-    // add new voter, compares user input to databsae
-    public boolean compareVoter(int pst, String pEmail) throws SQLException {
-        statement.execute("select * from students where email like '" + pEmail + "' OR idStudent = " + pst + ";");
-    }
+	// ADMINISTRATOR STATEMENTS
+
+	// add new voter
+	public void newVoter(int pst, String first, String last, String pEmail, String ppass) throws SQLException {
+		statement.execute(
+				"insert into students (idStudent, fname, lname, email, password, voted) values (" + pst + ", " + "'"
+						+ first + "', '" + last + "', '" + pEmail + "', '" + ppass + "', " + false + ");");
+	}
+
+	// add new voter, compares user input to databsae
+	public ResultSet compareVoter(int pst, String pEmail) throws SQLException {
+		return statement
+				.executeQuery("select * from students where email like '" + pEmail + "' OR idStudent = " + pst + ";");
+	}
+
+	public ResultSet getVotingResults() throws SQLException { // for Admin
+		return statement.executeQuery("select * " + 
+				"from candidates c join students s " + 
+				"where s.idStudent = c.idCandidate;");
+	}
+
+	public ResultSet getAdmin(String email) throws SQLException {
+		return statement.executeQuery("select * from admins where email like '" + email + "';");
+	}
 }
