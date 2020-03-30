@@ -36,6 +36,10 @@ public class dbAccessObj {
         return statement.executeQuery("select * from students where email like '"+email+"'");
     }
 
+    public ResultSet getStudentData(int id) throws SQLException{
+        return statement.executeQuery("select * from students where idStudent = "+id);
+    }
+
 
     /**
      * Increments the candidate with the passed ID
@@ -53,6 +57,10 @@ public class dbAccessObj {
      */
     public ResultSet getCandidates () throws SQLException{
         return statement.executeQuery("Select idCandidate, fname, lname from candidates;");
+    }
+
+    public ResultSet getCandidateData(int id) throws SQLException{
+        return statement.executeQuery("select * from candidates where idCandidate ="+id);
     }
 
     /**
@@ -79,7 +87,8 @@ public class dbAccessObj {
 				.executeQuery("select * from students where email like '" + pEmail + "' OR idStudent = " + pst + ";");
 	}
 
-	public ResultSet getVotingResults() throws SQLException { // for Admin
+	//This is redundant, since all candidates' id = student's id -R
+	public ResultSet getVotingResults() throws SQLException {
 		return statement.executeQuery("select * " + 
 				"from candidates c join students s " + 
 				"where s.idStudent = c.idCandidate;");
@@ -92,4 +101,13 @@ public class dbAccessObj {
 	public void setNewAdminPassword(int pId, String newPass) throws SQLException {
 		statement.execute("update admins set password ='" + newPass + "' where idAdmin =" + pId + ";");
 	}
+
+	public void addCandidate(int id) throws SQLException{
+        statement.execute("insert into candidates (idCandidate, fname, lname) select idStudent, fname, lname from students where idStudent = "+id);
+    }
+
+
+    public void deleteCandidate(int id) throws SQLException {
+        statement.execute("delete from candidates where idCandidate ="+id);
+    }
 }

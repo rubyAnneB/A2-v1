@@ -108,7 +108,7 @@ public class VoteController implements Initializable {
 	 * 
 	 * @throws SQLException
 	 */
-	public void getCandidatesS() throws SQLException {
+	public void getCandidates() throws SQLException {
 		ResultSet rs = db.getCandidates();
 
 		while (rs.next()) {
@@ -134,7 +134,7 @@ public class VoteController implements Initializable {
 												// -R
 		try {
 			db = new dbAccessObj();
-			getCandidatesS();
+			getCandidates();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

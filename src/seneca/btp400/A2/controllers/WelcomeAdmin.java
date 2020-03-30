@@ -28,10 +28,40 @@ public class WelcomeAdmin implements Initializable {
 	Label welcomeMessageLbl;
 	@FXML
 	Button logOut;
-	
+	@FXML
+	Button addCandidatebtn;
+	@FXML
+	Button deleteCandidatebtn;
+
+
+
 	public void initData(Administrator admin) {
 		this.admin = admin;
 		welcomeMessageLbl.setText("Welcome, "+ this.admin.getFullName());
+	}
+
+	@FXML
+	private void addCandidate(ActionEvent event) throws IOException{
+		//link to addCandidate
+		Parent addC = FXMLLoader.load(getClass().getResource("../resources/fxml/AddCandidate.fxml"));
+		Scene addCScene = new Scene(addC);
+
+		// get stage information
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(addCScene);
+		window.show();
+	}
+
+	@FXML
+	private void deleteCandidate(ActionEvent event)throws IOException{
+		//link to deleteCandidate
+		Parent deleteC = FXMLLoader.load(getClass().getResource("../resources/fxml/DeleteCandidate.fxml"));
+		Scene deleteCscene = new Scene(deleteC);
+
+		// get stage information
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(deleteCscene);
+		window.show();
 	}
 
 	@FXML

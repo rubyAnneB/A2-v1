@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="seneca.btp400.A2.controllers.DeleteCandidateController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seneca.btp400.A2.controllers.DeleteCandidateController">
+<children>
+   <Label layoutX="160.0" layoutY="51.0" prefHeight="53.0" prefWidth="283.0" text="Delete Candidate">
+      <font>
+         <Font size="36.0" />
+      </font>
+   </Label>
+   <TextField fx:id="studentNumTxtfld" layoutX="196.0" layoutY="207.0" prefHeight="31.0" prefWidth="210.0" promptText="student number" />
+   <Text layoutX="153.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter the candidate's student number" />
+   <Button fx:id="DeleteCandidateBtn" layoutX="471.0" layoutY="301.0" mnemonicParsing="false" onAction="#deleteCandidate" text="Delete" />
+   <Button fx:id="CancelBtn" layoutX="88.0" layoutY="301.0" mnemonicParsing="false" onAction="#CancelDelete" text="Back" />
+   <AnchorPane layoutX="189.0" layoutY="260.0" prefHeight="21.0" prefWidth="210.0">
+      <children>
+         <Label fx:id="warningLbl" prefHeight="21.0" prefWidth="224.0" textFill="#f50c0c" />
+      </children>
+   </AnchorPane>
+      <Text fill="#eb0707" layoutX="196.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This cannot be undone!">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+</children>
 </AnchorPane>
