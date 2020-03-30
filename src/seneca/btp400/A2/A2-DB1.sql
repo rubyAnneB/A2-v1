@@ -143,6 +143,6 @@ insert into candidates (idCandidate, fname, lname) values (25974, 'Ransell', 'Sc
 
 
 insert into admins (idAdmin, fname, lname, email, password) values (1001, 'Daniel', 'Derich', 'daniel@votingadmin.ca', 'x!gW7&@');
-insert into admins (idAdmin, fname, lname, email, password) values (1002, 'Ruby', 'Anne-Bautista', 'ruby@votingadmin.ca', '39CDMwQT');
+insert into admins (idAdmin, fname, lname, email, password) values (1002, 'Ruby', 'Anne-Bautista', 'ruby@admin.ca', 'abc123');
 
 
