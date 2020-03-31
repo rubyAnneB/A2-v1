@@ -1,39 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seneca.btp400.A2.controllers.ViewCandidateResults">
+<AnchorPane prefHeight="734.0" prefWidth="893.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seneca.btp400.A2.controllers.ViewCandidateResults">
    <children>
-      <!--
-      <TableView fx:id="table" layoutX="110.0" layoutY="100.0" prefHeight="200.0" prefWidth="380.0"> 
-        <columns>
-          <TableColumn fx:id="fnameCol" prefWidth="159.0" text="First Name" />
-            <TableColumn fx:id="lnameCol" prefWidth="150.0" text="Last Name" />
-          <TableColumn fx:id="voteCol" minWidth="3.0" prefWidth="68.0" text="Votes" />
-        </columns>
-      </TableView>
-      -->
-      <Button fx:id="backBtn" layoutX="58.0" layoutY="329.0" mnemonicParsing="false" onAction="#backtoMenu" text="Back to Menu" />
+      <Button fx:id="backBtn" layoutX="44.0" layoutY="665.0" mnemonicParsing="false" onAction="#backScene" text="Back to Menu" />
       <Label layoutX="139.0" layoutY="50.0" prefHeight="35.0" prefWidth="322.0" style="-fx-font-weight: bold;" text="Current Voting Results">
          <font>
             <Font name="Bookman Old Style Bold" size="24.0" />
          </font>
       </Label>
-      <BarChart fx:id="candidateChart" layoutX="93.0" layoutY="108.0" prefHeight="206.0" prefWidth="373.0">
+      <BarChart fx:id="candidateChart" layoutX="44.0" layoutY="125.0" prefHeight="523.0" prefWidth="772.0">
         <xAxis>
-          <CategoryAxis fx:id="nameAxis" side="BOTTOM" />
+          <CategoryAxis fx:id="nameAxis" label="Candidate" side="BOTTOM" />
         </xAxis>
         <yAxis>
-          <NumberAxis fx:id="voteAxis" side="LEFT" />
+          <NumberAxis fx:id="voteAxis" label="Votes" side="LEFT" />
         </yAxis>
       </BarChart>
    </children>

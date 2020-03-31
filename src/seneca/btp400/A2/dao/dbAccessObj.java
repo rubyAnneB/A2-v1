@@ -51,11 +51,11 @@ public class dbAccessObj {
 
     /**
      *
-     * @return All Candidate's id, first name and last name
+     * @return All Candidate's id, first name and last name and votes
      * @throws SQLException
      */
     public ResultSet getCandidates () throws SQLException{
-        return statement.executeQuery("Select idCandidate, fname, lname from candidates;");
+        return statement.executeQuery("Select idCandidate, fname, lname,votes from candidates;");
     }
 
     public ResultSet getCandidateData(int id) throws SQLException{
