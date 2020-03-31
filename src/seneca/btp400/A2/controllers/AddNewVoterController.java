@@ -1,6 +1,7 @@
 package seneca.btp400.A2.controllers;
 
 import javafx.fxml.Initializable;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -19,15 +20,16 @@ import java.sql.SQLException;
 import java.io.IOException;
 import java.sql.ResultSet;
 
+
+
+import seneca.btp400.A2.dao.dbAccessObj;
+import seneca.btp400.A2.model.Administrator;
+import seneca.btp400.A2.model.Voter;
 /**
  * @author Daniel Derich
  * @since 2020-03-28
  * displays form for add new voter. Takes info and puts it into the database
  */
-
-import seneca.btp400.A2.dao.dbAccessObj;
-import seneca.btp400.A2.model.Administrator;
-import seneca.btp400.A2.model.Voter;
 public class AddNewVoterController  implements Initializable {
     @FXML
     private TextField fnameTyped;   
@@ -58,7 +60,7 @@ public class AddNewVoterController  implements Initializable {
 		int studentNumber = Integer.parseInt(stnumTyped.getText());
 		ResultSet rs = db.compareVoter(studentNumber, emailTyped.getText()); // checks if student already exists in
 																				// database
-
+		
 		if (rs.next() == false) {
 			voter = new Voter(studentNumber, fnameTyped.getText(), lnameTyped.getText(), emailTyped.getText(), false);
 			voter.setPassword(passTyped.getText());
@@ -81,12 +83,12 @@ public class AddNewVoterController  implements Initializable {
     private void SubmitAction(ActionEvent event) throws IOException, SQLException {
         
        boolean register = createVoter();
-      //displayed.setStyle("-fx-font-weight: bold");
+
         if (register) {
-            //displayed.setStyle("-fx-color: green");
+        	displayed.setStyle("-fx-text-fill: green");
             displayed.setText("Successfully registered!");
         } else {
-            //displayed.setStyle("-fx-color: red");
+        	displayed.setStyle("-fx-text-fill: red");
         }
     }
     

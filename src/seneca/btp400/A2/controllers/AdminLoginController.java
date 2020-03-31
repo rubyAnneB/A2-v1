@@ -65,13 +65,11 @@ public class AdminLoginController implements Initializable {
 	@FXML
 	private void loginClick (ActionEvent event) throws IOException, SQLException {
 		buildAdministrator(emailTyped.getText());
-		
-		displayMessage.setStyle("-fx-font-weight: bold");
-		displayMessage.setStyle("-fx-color: red");
+
+		displayMessage.setStyle("-fx-text-fill: red");
 		
 		if(admin.isValid() == true){
             if(passTyped.getText().equals(admin.getPassword()) == true){
-            	displayMessage.setText("");
             	welcomeAdminSceneChange(event);
             }else {
             	displayMessage.setText("Incorrect password/email");            

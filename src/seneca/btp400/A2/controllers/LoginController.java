@@ -30,6 +30,7 @@ import seneca.btp400.A2.model.Voter;
  * Controller for the login scene. Takes care of the authentication process. And builds the voter object for the
  * voting processs
  */
+
 public class LoginController implements Initializable {
 
     @FXML Button backBtn;
@@ -93,7 +94,7 @@ public class LoginController implements Initializable {
         String email = emailTxtfld.getText();
 
         buildVoter(email);
-
+        message.setStyle("-fx-text-fill: red");
         //Find a way to simplify this I don't like all these nested if statements -R
         if(voter.isValid()){
             if(passwordField.getText().equals(voter.getPassword())){

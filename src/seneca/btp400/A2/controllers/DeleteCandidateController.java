@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import seneca.btp400.A2.dao.dbAccessObj;
+import seneca.btp400.A2.model.Administrator;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,40 +31,50 @@ public class DeleteCandidateController implements Initializable {
     TextField studentNumTxtfld;
     @FXML
     Label warningLbl;
-
+Administrator admin;
     dbAccessObj db;
 
+    public void setAdmin(Administrator admin) {
+    	this.admin = admin;
+    }
 
-    @FXML
-    private void deleteCandidate(ActionEvent event) throws IOException, SQLException {
-        int id = Integer.parseInt(studentNumTxtfld.getText());
-        ResultSet rs = db.getStudentData(id);
-        //I can potentiall redesign this such that deleteCandidate returns bool
-        if(rs.next()){
-            rs=db.getCandidateData(id);
-            if(rs.next()){
-                db.deleteCandidate(id);
-                warningLbl.setText("Candidate deleted");
+	@FXML
+	private void deleteCandidate(ActionEvent event) throws IOException, SQLException {
+		int id = Integer.parseInt(studentNumTxtfld.getText());
+		ResultSet rs = db.getStudentData(id);
+		warningLbl.setStyle("-fx-text-fill: red");
+		// I can potentially redesign this such that deleteCandidate returns bool
+		if (rs.next()) {
+			rs = db.getCandidateData(id);
+			if (rs.next()) {
+				db.deleteCandidate(id);
+				warningLbl.setStyle("-fx-text-fill: green");
+				warningLbl.setText("Candidate deleted");
 
-            }else{
-                warningLbl.setText("Candidate doesn't exists");
-            }
-        }else{
-            warningLbl.setText("This student/voter doesn't exist");
-        }
+			} else {
+				warningLbl.setText("Candidate doesn't exist");
+			}
+		} else {
+			warningLbl.setText("This student/voter doesn't exist");
+		}
 
     }
 
 
     @FXML
     private void CancelDelete (ActionEvent event)throws IOException {
-        Parent cancel = FXMLLoader.load(getClass().getResource("../resources/fxml/WelcomeAdmin.fxml"));
-        Scene cancelScene = new Scene(cancel);
+    	FXMLLoader loader = new FXMLLoader();
+ 		loader.setLocation(getClass().getResource("../resources/fxml/WelcomeAdmin.fxml"));
+ 		Parent menu = loader.load();
 
-        // get stage information
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(cancelScene);
-        window.show();
+ 		Scene welcomeScene = new Scene(menu);
+
+ 		// Access controller
+ 		WelcomeAdmin controller = loader.getController();
+ 		controller.initData(this.admin);
+ 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+ 		window.setScene(welcomeScene);
+ 		window.show();
 
     }
 

@@ -1,6 +1,7 @@
 package seneca.btp400.A2.controllers;
 
 import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,12 +17,20 @@ import seneca.btp400.A2.model.Administrator;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+/**
+ * @author Daniel Derich
+ * @since 2020-03-30
+ * @version 1.0
+ */
 public class WelcomeAdmin implements Initializable {
 	Administrator admin;
 	@FXML
 	Button viewCandidates;
 	@FXML
 	Button addVoterBtn;
+	@FXML
+	Button deleteVoterBtn;
 	@FXML
 	Button changePassword;
 	@FXML
@@ -32,36 +41,10 @@ public class WelcomeAdmin implements Initializable {
 	Button addCandidatebtn;
 	@FXML
 	Button deleteCandidatebtn;
-
-
-
+	
 	public void initData(Administrator admin) {
 		this.admin = admin;
 		welcomeMessageLbl.setText("Welcome, "+ this.admin.getFullName());
-	}
-
-	@FXML
-	private void addCandidate(ActionEvent event) throws IOException{
-		//link to addCandidate
-		Parent addC = FXMLLoader.load(getClass().getResource("../resources/fxml/AddCandidate.fxml"));
-		Scene addCScene = new Scene(addC);
-
-		// get stage information
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		window.setScene(addCScene);
-		window.show();
-	}
-
-	@FXML
-	private void deleteCandidate(ActionEvent event)throws IOException{
-		//link to deleteCandidate
-		Parent deleteC = FXMLLoader.load(getClass().getResource("../resources/fxml/DeleteCandidate.fxml"));
-		Scene deleteCscene = new Scene(deleteC);
-
-		// get stage information
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		window.setScene(deleteCscene);
-		window.show();
 	}
 
 	@FXML
@@ -85,6 +68,22 @@ public class WelcomeAdmin implements Initializable {
 		Scene welcomeAdminScene = new Scene(welcomeAdmin);
 
 		AddNewVoterController controller = loader.getController();
+		controller.setAdmin(admin);
+		admin = null;
+
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(welcomeAdminScene);
+		window.show();
+	}
+	@FXML
+	private void deleteVoter (ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("../resources/fxml/DeleteVoter.fxml"));
+		Parent welcomeAdmin = loader.load();
+
+		Scene welcomeAdminScene = new Scene(welcomeAdmin);
+
+		DeleteVoterController controller = loader.getController();
 		controller.setAdmin(admin);
 		admin = null;
 
@@ -127,9 +126,41 @@ public class WelcomeAdmin implements Initializable {
 		window.show();
 	}
 	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	@FXML
+	private void addCandidate(ActionEvent event) throws IOException{
+		//link to addCandidate
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("../resources/fxml/AddCandidate.fxml"));
+		Parent addC = loader.load();
+		Scene scene = new Scene(addC);
 
+		AddCandidateController controller = loader.getController();
+		controller.initData(admin);
+		admin = null;
+
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(scene);
+		window.show();
 	}
 
+	@FXML
+	private void deleteCandidate(ActionEvent event)throws IOException{
+		//link to deleteCandidate
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("../resources/fxml/DeleteCandidate.fxml"));
+		Parent deleteC = loader.load();
+		Scene scene = new Scene(deleteC);
+
+		DeleteCandidateController controller = loader.getController();
+		controller.setAdmin(admin);
+		admin = null;
+
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(scene);
+		window.show();
+	}
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+	}
 }

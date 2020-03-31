@@ -23,6 +23,11 @@ import javafx.scene.control.TextField;
 import seneca.btp400.A2.dao.dbAccessObj;
 import seneca.btp400.A2.model.Administrator;
 
+/**
+ * @author Daniel Derich
+ * @since 2020-03-30
+ * @version 1.0
+ */
 public class AdminChangePassword implements Initializable {
 	
 	@FXML
@@ -67,23 +72,39 @@ public class AdminChangePassword implements Initializable {
 	}
 	
 	
-	
 	@FXML
 	public void submission(ActionEvent event) throws SQLException {
-		if (oldTyped.getText().equals(admin.getPassword())) {
-			if (newTyped.getText().equals(newConfirmed.getText())) {
-				if (newTyped.getText().length() >= 6) {
-					display.setText("Password changed successfully!");
-					admin.setPassword(newTyped.getText());
-					db.setNewAdminPassword(admin.getId(),newTyped.getText());
-				} else {
-					display.setText("Password length too short!");
-				}				
-			} else {
-				display.setText("New password and confirmation do not match.");
+		display.setStyle("-fx-text-fill: red");
+		if (oldTyped.getText().equals(admin.getPassword()) == true)
+		{
+			if (oldTyped.getText().equals(newTyped.getText()) == false)
+			{
+				if (newTyped.getText().equals(newConfirmed.getText()) == true)
+				{
+					if (newTyped.getText().length() >= 6)
+					{
+						display.setStyle("-fx-text-fill: green");
+						display.setText("Password changed successfully!");
+						admin.setPassword(newTyped.getText());
+						db.setNewAdminPassword(admin.getId(), newTyped.getText());
+					}
+					else
+					{
+						display.setText("Password length too short!");
+					}
+				}
+				else
+				{
+					display.setText("New password and confirmation do not match.");
+				}
 			}
+			else 
+			{
+				display.setText("New Password cannot be the same as your Old Password.");
+			}
+
 		} else {
-			display.setText("Old Password incorrect.");
+			display.setText("Old Password Incorrect.");
 		}
 	}
 	

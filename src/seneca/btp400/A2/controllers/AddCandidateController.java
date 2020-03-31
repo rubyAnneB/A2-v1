@@ -12,7 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import seneca.btp400.A2.dao.dbAccessObj;
-
+import seneca.btp400.A2.model.Administrator;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,39 +31,46 @@ public class AddCandidateController implements Initializable {
     @FXML
     Label warningLbl;
 
-
+    Administrator admin;
     dbAccessObj db;
+    
+    public void initData(Administrator admin) {
+    	this.admin = admin;
+    }
 
     @FXML
     private void addCandidate (ActionEvent event) throws SQLException {
         int id = Integer.parseInt(studentNumTxtfld.getText());
         ResultSet rs = db.getStudentData(id);
+        warningLbl.setStyle("-fx-text-fill: red");
         if(rs.next()){
             rs=db.getCandidateData(id);
             if(!rs.next()){
                 db.addCandidate(id);
+                warningLbl.setStyle("-fx-text-fill: green");
                 warningLbl.setText("Candidate added");
-
-            }else{
+            }else{          	
                 warningLbl.setText("Candidate already exists");
             }
         }else{
             warningLbl.setText("This student/voter doesn't exist");
         }
-
-
     }
 
     @FXML
-    private void CancelAdd (ActionEvent event)throws IOException{
-        Parent cancel = FXMLLoader.load(getClass().getResource("../resources/fxml/WelcomeAdmin.fxml"));
-        Scene cacelScene = new Scene(cancel);
+    private void CancelAdd (ActionEvent event)throws IOException{       
+        FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("../resources/fxml/WelcomeAdmin.fxml"));
+		Parent menu = loader.load();
 
-        // get stage information
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(cacelScene);
-        window.show();
+		Scene welcomeScene = new Scene(menu);
 
+		// Access controller
+		WelcomeAdmin controller = loader.getController();
+		controller.initData(this.admin);
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(welcomeScene);
+		window.show();
     }
 
     @Override
