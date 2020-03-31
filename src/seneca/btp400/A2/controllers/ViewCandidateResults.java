@@ -74,7 +74,7 @@ public class ViewCandidateResults implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		candidateData = new XYChart.Series<>();
-		nameAxis.setTickLabelRotation(90);
+		nameAxis.setTickLabelRotation(0);
 		try {
 			db = new dbAccessObj();
 		} catch (SQLException e) {
