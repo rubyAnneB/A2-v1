@@ -18,10 +18,12 @@
       </Label>
       <BarChart fx:id="candidateChart" layoutX="44.0" layoutY="125.0" prefHeight="523.0" prefWidth="772.0">
         <xAxis>
-          <CategoryAxis fx:id="nameAxis" label="Candidate" side="BOTTOM" />
+            <NumberAxis fx:id="voteAxis" label="Votes" side="LEFT" />
+
         </xAxis>
         <yAxis>
-          <NumberAxis fx:id="voteAxis" label="Votes" side="LEFT" />
+            <CategoryAxis fx:id="nameAxis" label="Candidate" side="BOTTOM" />
+
         </yAxis>
       </BarChart>
    </children>

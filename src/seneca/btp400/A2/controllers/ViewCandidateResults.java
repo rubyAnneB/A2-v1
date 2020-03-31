@@ -28,13 +28,13 @@ public class ViewCandidateResults implements Initializable {
 	@FXML
 	public Button backBtn;
 	@FXML
-	public BarChart<String,Number> candidateChart;
+	public BarChart<Number,String> candidateChart;
 	@FXML
 	public CategoryAxis nameAxis;
 	@FXML
 	public NumberAxis voteAxis;
 	@FXML
-	XYChart.Series<String,Number> candidateData;
+	XYChart.Series<Number,String> candidateData;
 	dbAccessObj db;
 	Administrator admin;
 
@@ -66,7 +66,7 @@ public class ViewCandidateResults implements Initializable {
 		String name;
 		while (rs.next()){
 			name = rs.getString("fname")+" "+rs.getString("lname");
-			candidateData.getData().add(new XYChart.Data<>(name,rs.getInt("votes")));
+			candidateData.getData().add(new XYChart.Data<>(rs.getInt("votes"),name));
 		}
 		candidateChart.getData().add(candidateData);
 	}
@@ -85,6 +85,8 @@ public class ViewCandidateResults implements Initializable {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
+		voteAxis.setTickLabelRotation(90);
 
 	}
 
