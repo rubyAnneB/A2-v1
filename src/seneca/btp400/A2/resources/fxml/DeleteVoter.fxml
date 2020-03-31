@@ -1,43 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seneca.btp400.A2.controllers.DeleteVoterController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="811.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seneca.btp400.A2.controllers.DeleteVoterController">
    <children>
-      <Label layoutX="216.0" layoutY="36.0" text="Delete Voter ">
-         <font>
-            <Font size="29.0" />
-         </font>
-      </Label>
-      <Text layoutX="140.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter the voter's student number and email" wrappingWidth="320.0" />
-      <Label fx:id="errorLabel" layoutX="110.0" layoutY="248.0" prefHeight="43.0" prefWidth="229.0" textFill="#6ad927">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="stNumField" layoutX="251.0" layoutY="133.0" />
-      <TextField fx:id="emailField" layoutX="251.0" layoutY="175.0" />
-      <Label layoutX="98.0" layoutY="133.0" text="Student Number">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="169.0" layoutY="168.0" prefHeight="32.0" prefWidth="47.0" text="Email">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Button fx:id="deleteBtn" layoutX="369.0" layoutY="298.0" mnemonicParsing="false" onAction="#deleteVoter" prefHeight="49.0" prefWidth="88.0" text="Delete" />
-      <Button fx:id="cancelBtn" layoutX="50.0" layoutY="335.0" mnemonicParsing="false" onAction="#cancelDelete" prefHeight="25.0" prefWidth="181.0" text="Cancel / Back to Admin Menu" />
-      <Text fill="#eb0707" layoutX="205.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This cannot be undone!">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
+      <AnchorPane depthTest="ENABLE" prefHeight="811.0" prefWidth="204.0">
+         <children>
+            <Button fx:id="viewCandidates" layoutX="1.0" layoutY="280.0" mnemonicParsing="false" onAction="#getVotingResultsScene" prefHeight="84.0" prefWidth="227.0" text="Current Voting Reports" />
+            <Button fx:id="addCandidatebtn" layoutY="384.0" mnemonicParsing="false" onAction="#addCandidateScene" prefHeight="84.0" prefWidth="227.0" text="Add Candidate" />
+            <Button fx:id="deleteVoterBtn" layoutY="176.0" mnemonicParsing="false" onAction="#deleteVoterScene" prefHeight="84.0" prefWidth="227.0" text="Delete Voter" />
+            <Button fx:id="deleteCandidatebtn" layoutX="1.0" layoutY="485.0" mnemonicParsing="false" onAction="#deleteCandidateScene" prefHeight="84.0" prefWidth="227.0" text="Delete Candidate" />
+            <Button fx:id="changePassword" layoutX="1.0" layoutY="585.0" mnemonicParsing="false" onAction="#passwordChScene" prefHeight="84.0" prefWidth="227.0" text="Change Password" />
+            <Button fx:id="logOut" layoutX="1.0" layoutY="691.0" mnemonicParsing="false" onAction="#logAdminOutScene" prefHeight="84.0" prefWidth="227.0" text="Log Out" />
+            <Button fx:id="addVoterBtn" layoutX="1.0" layoutY="75.0" mnemonicParsing="false" onAction="#addVoterScene" prefHeight="84.0" prefWidth="227.0" text="Add Voter" />
+         </children>
+      </AnchorPane>
+      <Separator layoutX="225.0" opacity="0.82" orientation="VERTICAL" prefHeight="811.0" prefWidth="18.0">
+         <effect>
+            <Blend />
+         </effect>
+      </Separator>
+      <AnchorPane layoutX="234.0" prefHeight="811.0" prefWidth="1041.0">
+         <children>
+            <Label layoutX="379.0" layoutY="85.0" prefHeight="65.0" prefWidth="347.0" text="Delete Voter" textAlignment="CENTER">
+               <font>
+                  <Font size="56.0" />
+               </font>
+            </Label>
+            <Text layoutX="290.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter the voter's student number and email" wrappingWidth="464.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Label fx:id="errorLabel" layoutX="323.0" layoutY="381.0" prefHeight="43.0" prefWidth="229.0" textFill="#6ad927">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="stNumField" layoutX="464.0" layoutY="266.0" />
+            <TextField fx:id="emailField" layoutX="464.0" layoutY="308.0" />
+            <Label layoutX="311.0" layoutY="266.0" text="Student Number">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="382.0" layoutY="301.0" prefHeight="32.0" prefWidth="47.0" text="Email">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="deleteBtn" layoutX="657.0" layoutY="435.0" mnemonicParsing="false" onAction="#deleteVoter" prefHeight="32.0" prefWidth="138.0" text="Delete" />
+            <Button fx:id="cancelBtn" layoutX="232.0" layoutY="435.0" mnemonicParsing="false" onAction="#cancelDelete" prefHeight="19.0" prefWidth="138.0" text="Cancel" />
+            <Text fill="#eb0707" layoutX="418.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This cannot be undone!">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
