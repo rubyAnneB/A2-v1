@@ -39,8 +39,7 @@ public class dbAccessObj {
     public ResultSet getStudentData(int id) throws SQLException{
         return statement.executeQuery("select * from students where idStudent = "+id);
     }
-
-
+    
     /**
      * Increments the candidate with the passed ID
      * @param ID candidate's ID
@@ -62,7 +61,7 @@ public class dbAccessObj {
     public ResultSet getCandidateData(int id) throws SQLException{
         return statement.executeQuery("select * from candidates where idCandidate ="+id);
     }
-
+    
     /**
      * Changes voter's status to true
      * @param ID
@@ -87,8 +86,7 @@ public class dbAccessObj {
 				.executeQuery("select * from students where email like '" + pEmail + "' OR idStudent = " + pst + ";");
 	}
 
-	//This is redundant, since all candidates' id = student's id -R
-	public ResultSet getVotingResults() throws SQLException {
+	public ResultSet getVotingResults() throws SQLException { // for Admin
 		return statement.executeQuery("select * " + 
 				"from candidates c join students s " + 
 				"where s.idStudent = c.idCandidate;");
@@ -109,5 +107,9 @@ public class dbAccessObj {
 
     public void deleteCandidate(int id) throws SQLException {
         statement.execute("delete from candidates where idCandidate ="+id);
+    }
+
+    public void deleteVoter(int id, String e) throws SQLException {
+    	statement.execute("delete from students where idStudent = " + id + " AND email = '" + e + "';");
     }
 }
