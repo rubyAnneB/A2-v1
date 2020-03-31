@@ -20,7 +20,9 @@ public class dbConnect {
      */
     public Connection getConnection(){
         try{
-            connection=  DriverManager.getConnection("jdbc:mysql://localhost:3306/a2votingapp?serverTimezone=UTC","root","abcd");
+            //connection=  DriverManager.getConnection("jdbc:mysql://localhost:3306/a2votingapp?serverTimezone=UTC","root","abcd");
+           connection=  DriverManager.getConnection("jdbc:mysql://us-cdbr-iron-east-01.cleardb.net:3306/heroku_748cc996cb3eb40","bf58891033afe3","aad37c0f");
+
 
         }catch(SQLException err){
             System.out.println("There was an error in connecting to the database");
