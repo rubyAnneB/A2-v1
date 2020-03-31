@@ -1,38 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <!-- This scene confirms that the user is who they say they are and lets 
 	them know about the rules that they are agreeing to -->
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seneca.btp400.A2.controllers.WelcomeAdmin">
-	<children>
-		<AnchorPane />
-		<Label fx:id="welcomeMessageLbl" layoutX="62.0" layoutY="84.0" prefHeight="46.0" prefWidth="476.0" wrapText="true">
-			<font>
-				<Font name="Cooper Black" size="30.0" />
-			</font>
-		</Label>
-		<Button fx:id="addVoterBtn" layoutX="132.0" layoutY="152.0" mnemonicParsing="false" onAction="#addVoter" prefHeight="25.0" prefWidth="155.0" text="Add Voter to database" />
-		<Button fx:id="viewCandidates" layoutX="216.0" layoutY="194.0" mnemonicParsing="false" onAction="#getVotingResults" prefHeight="25.0" prefWidth="190.0" text="View Current Voting Results" />
-		<Button fx:id="logOut" layoutX="88.0" layoutY="331.0" mnemonicParsing="false" onAction="#logAdminOut" prefHeight="36.0" prefWidth="68.0" text="Log Out" />
-      <Button fx:id="changePassword" layoutX="216.0" layoutY="240.0" mnemonicParsing="false" onAction="#passwordCh" prefHeight="25.0" prefWidth="190.0" text="Change Password" />
-	 <Button fx:id="addCandidatebtn" layoutX="190.0" layoutY="284.0" mnemonicParsing="false" onAction="#addCandidate" text="Add Candidate" />
-      <Button fx:id="deleteCandidatebtn" layoutX="322.0" layoutY="284.0" mnemonicParsing="false" onAction="#deleteCandidate" text="Delete Candidate" />
-      <Label layoutX="146.0" layoutY="21.0" prefHeight="46.0" prefWidth="330.0" text="Administrator Menu" textAlignment="CENTER">
-         <font>
-            <Font name="Baskerville Old Face" size="36.0" />
-         </font>
-      </Label>
-      <Button fx:id="deleteVoterBtn" layoutX="322.0" layoutY="152.0" mnemonicParsing="false" onAction="#deleteVoter" prefHeight="25.0" prefWidth="184.0" text="Delete Voter from database" />
-	
-	</children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="811.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seneca.btp400.A2.controllers.WelcomeAdmin">
+   <children>
+      <AnchorPane depthTest="ENABLE" prefHeight="811.0" prefWidth="204.0">
+         <children>
+            <Button fx:id="viewCandidates" layoutX="1.0" layoutY="280.0" mnemonicParsing="false" onAction="#getVotingResults" prefHeight="84.0" prefWidth="227.0" text="Current Voting Reports" />
+            <Button fx:id="addCandidatebtn" layoutY="384.0" mnemonicParsing="false" onAction="#addCandidate" prefHeight="84.0" prefWidth="227.0" text="Add Candidate" />
+            <Button fx:id="deleteVoterBtn" layoutY="176.0" mnemonicParsing="false" onAction="#deleteVoter" prefHeight="84.0" prefWidth="227.0" text="Delete Voter" />
+            <Button fx:id="deleteCandidatebtn" layoutX="1.0" layoutY="485.0" mnemonicParsing="false" onAction="#deleteCandidate" prefHeight="84.0" prefWidth="227.0" text="Delete Candidate" />
+            <Button fx:id="changePassword" layoutX="1.0" layoutY="585.0" mnemonicParsing="false" onAction="#passwordCh" prefHeight="84.0" prefWidth="227.0" text="Change Password" />
+            <Button fx:id="logOut" layoutX="1.0" layoutY="691.0" mnemonicParsing="false" onAction="#logAdminOut" prefHeight="84.0" prefWidth="227.0" text="Log Out" />
+            <Button fx:id="addVoterBtn" layoutX="1.0" layoutY="75.0" mnemonicParsing="false" onAction="#addVoter" prefHeight="84.0" prefWidth="227.0" text="Add Voter" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="243.0" prefHeight="811.0" prefWidth="1036.0">
+         <children>
+            <AnchorPane layoutX="121.0" layoutY="347.0" prefHeight="118.0" prefWidth="795.0">
+               <children>
+                  <Label fx:id="welcomeMessageLbl" prefHeight="115.0" prefWidth="819.0" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
+      <Separator layoutX="225.0" opacity="0.82" orientation="VERTICAL" prefHeight="811.0" prefWidth="18.0">
+         <effect>
+            <Blend />
+         </effect>
+      </Separator>
+   </children>
 </AnchorPane>

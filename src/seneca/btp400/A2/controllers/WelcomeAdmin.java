@@ -35,6 +35,7 @@ public class WelcomeAdmin implements Initializable {
 	Button changePassword;
 	@FXML
 	Label welcomeMessageLbl;
+
 	@FXML
 	Button logOut;
 	@FXML
@@ -44,6 +45,7 @@ public class WelcomeAdmin implements Initializable {
 	
 	public void initData(Administrator admin) {
 		this.admin = admin;
+
 		welcomeMessageLbl.setText("Welcome, "+ this.admin.getFullName());
 	}
 

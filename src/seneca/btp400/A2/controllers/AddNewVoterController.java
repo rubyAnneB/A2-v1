@@ -31,6 +31,25 @@ import seneca.btp400.A2.model.Voter;
  * displays form for add new voter. Takes info and puts it into the database
  */
 public class AddNewVoterController  implements Initializable {
+
+    //navigation
+    @FXML
+    Button viewCandidates;
+    @FXML
+    Button addVoterBtn;
+    @FXML
+    Button deleteVoterBtn;
+    @FXML
+    Button changePassword;
+    @FXML
+    Button logOut;
+    @FXML
+    Button addCandidatebtn;
+    @FXML
+    Button deleteCandidatebtn;
+
+
+
     @FXML
     private TextField fnameTyped;   
     @FXML
@@ -43,17 +62,136 @@ public class AddNewVoterController  implements Initializable {
     private PasswordField passTyped;   
     @FXML
     private Label displayed; 
+
     @FXML
-    private Button backBtn;
+    Button submitBtn;
     @FXML
-    private Button submitBtn;
-    @FXML
-    private Button resetBtn;
+    Button resetBtn;
     
     dbAccessObj db;
     Voter voter;
     Administrator admin;
-	public void setAdmin(Administrator admin) {
+
+    //Navigation
+    @FXML
+    private void logAdminOut (ActionEvent event) throws IOException{
+        admin = null;
+        Parent welcome = FXMLLoader.load(getClass().getResource("../resources/fxml/AdminLogin.fxml"));
+        Scene welcomeScene = new Scene(welcome);
+
+        //get stage information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(welcomeScene);
+        window.show();
+    }
+
+    @FXML
+    private void addVoter (ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../resources/fxml/addNewVoter.fxml"));
+        Parent welcomeAdmin = loader.load();
+
+        Scene welcomeAdminScene = new Scene(welcomeAdmin);
+
+        AddNewVoterController controller = loader.getController();
+        controller.setAdmin(admin);
+        admin = null;
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(welcomeAdminScene);
+        window.show();
+    }
+    @FXML
+    private void deleteVoter (ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../resources/fxml/DeleteVoter.fxml"));
+        Parent welcomeAdmin = loader.load();
+
+        Scene welcomeAdminScene = new Scene(welcomeAdmin);
+
+        DeleteVoterController controller = loader.getController();
+        controller.setAdmin(admin);
+        admin = null;
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(welcomeAdminScene);
+        window.show();
+    }
+
+    @FXML
+    private void getVotingResults (ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../resources/fxml/ViewCandidateResults.fxml"));
+        Parent welcomeAdmin = loader.load();
+
+        Scene welcomeAdminScene = new Scene(welcomeAdmin);
+
+        ViewCandidateResults controller = loader.getController();
+        controller.setAdmin(admin);
+        admin = null;
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(welcomeAdminScene);
+        window.show();
+    }
+
+    @FXML
+    private void passwordCh (ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../resources/fxml/AdminChangePassword.fxml"));
+        Parent welcomeAdmin = loader.load();
+
+        Scene scene = new Scene(welcomeAdmin);
+
+        AdminChangePassword controller = loader.getController();
+        controller.setAdmin(admin);
+        admin = null;
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
+
+    @FXML
+    private void addCandidate(ActionEvent event) throws IOException{
+        //link to addCandidate
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../resources/fxml/AddCandidate.fxml"));
+        Parent addC = loader.load();
+        Scene scene = new Scene(addC);
+
+        AddCandidateController controller = loader.getController();
+        controller.initData(admin);
+        admin = null;
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
+
+    @FXML
+    private void deleteCandidate(ActionEvent event)throws IOException{
+        //link to deleteCandidate
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../resources/fxml/DeleteCandidate.fxml"));
+        Parent deleteC = loader.load();
+        Scene scene = new Scene(deleteC);
+
+        DeleteCandidateController controller = loader.getController();
+        controller.setAdmin(admin);
+        admin = null;
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
+
+
+
+
+
+
+    public void setAdmin(Administrator admin) {
 		this.admin = admin;
 	}
 	public boolean createVoter() throws SQLException {
@@ -80,7 +218,7 @@ public class AddNewVoterController  implements Initializable {
 	}
 	
     @FXML
-    private void SubmitAction(ActionEvent event) throws IOException, SQLException {
+    private void SubmitAction(ActionEvent event) throws SQLException {
         
        boolean register = createVoter();
 
@@ -91,26 +229,7 @@ public class AddNewVoterController  implements Initializable {
         	displayed.setStyle("-fx-text-fill: red");
         }
     }
-    
-    @FXML
-    private void BackAction(ActionEvent event) throws IOException, SQLException {
-    	FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../resources/fxml/WelcomeAdmin.fxml"));
-		Parent menu = loader.load();
 
-		Scene voteScene = new Scene(menu);
-
-		// Access controller
-		WelcomeAdmin controller = loader.getController();
-		controller.initData(admin);
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		window.setScene(voteScene);
-		window.show();
-    }
-    
-    
-   
-    
     
     @FXML
     public void clearDisplay() {
