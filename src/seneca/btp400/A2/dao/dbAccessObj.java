@@ -86,11 +86,7 @@ public class dbAccessObj {
 				.executeQuery("select * from students where email like '" + pEmail + "' OR idStudent = " + pst);
 	}
 
-	public ResultSet getVotingResults() throws SQLException { // for Admin
-		return statement.executeQuery("select * " + 
-				"from candidates c join students s " + 
-				"where s.idStudent = c.idCandidate");
-	}
+
 
 	public ResultSet getAdmin(String email) throws SQLException {
 		return statement.executeQuery("select * from admins where email like '" + email);
