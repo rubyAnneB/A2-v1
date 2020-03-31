@@ -55,7 +55,7 @@ public class dbAccessObj {
      * @throws SQLException
      */
     public ResultSet getCandidates () throws SQLException{
-        return statement.executeQuery("Select idCandidate, fname, lname,votes from candidates;");
+        return statement.executeQuery("Select idCandidate, fname, lname,votes from candidates");
     }
 
     public ResultSet getCandidateData(int id) throws SQLException{
@@ -77,27 +77,27 @@ public class dbAccessObj {
 	public void newVoter(int pst, String first, String last, String pEmail, String ppass) throws SQLException {
 		statement.execute(
 				"insert into students (idStudent, fname, lname, email, password, voted) values (" + pst + ", " + "'"
-						+ first + "', '" + last + "', '" + pEmail + "', '" + ppass + "', " + false + ");");
+						+ first + "', '" + last + "', '" + pEmail + "', '" + ppass + "', " + false + ")");
 	}
 
 	// add new voter, compares user input to databsae
 	public ResultSet compareVoter(int pst, String pEmail) throws SQLException {
 		return statement
-				.executeQuery("select * from students where email like '" + pEmail + "' OR idStudent = " + pst + ";");
+				.executeQuery("select * from students where email like '" + pEmail + "' OR idStudent = " + pst);
 	}
 
 	public ResultSet getVotingResults() throws SQLException { // for Admin
 		return statement.executeQuery("select * " + 
 				"from candidates c join students s " + 
-				"where s.idStudent = c.idCandidate;");
+				"where s.idStudent = c.idCandidate");
 	}
 
 	public ResultSet getAdmin(String email) throws SQLException {
-		return statement.executeQuery("select * from admins where email like '" + email + "';");
+		return statement.executeQuery("select * from admins where email like '" + email);
 	}
 	
 	public void setNewAdminPassword(int pId, String newPass) throws SQLException {
-		statement.execute("update admins set password ='" + newPass + "' where idAdmin =" + pId + ";");
+		statement.execute("update admins set password ='" + newPass + "' where idAdmin =" + pId);
 	}
 
 	public void addCandidate(int id) throws SQLException{
@@ -110,6 +110,6 @@ public class dbAccessObj {
     }
 
     public void deleteVoter(int id, String e) throws SQLException {
-    	statement.execute("delete from students where idStudent = " + id + " AND email = '" + e + "';");
+    	statement.execute("delete from students where idStudent = " + id + " AND email = '" + e);
     }
 }
