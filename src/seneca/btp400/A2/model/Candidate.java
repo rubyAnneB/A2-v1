@@ -1,5 +1,8 @@
 package seneca.btp400.A2.model;
-
+/**
+ * @author Daniel Derich
+ * @since 2020-03-30
+ */
 public class Candidate extends Voter{
 	private int numberOfVotes;
 	
