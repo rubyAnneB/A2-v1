@@ -27,7 +27,7 @@ import seneca.btp400.A2.model.Administrator;
 import seneca.btp400.A2.model.Voter;
 /**
  * @author Daniel Derich
- * @since 2020-03-28
+ * @since 2020-03-29
  * displays form for add new voter. Takes info and puts it into the database
  */
 public class AddNewVoterController  implements Initializable {
