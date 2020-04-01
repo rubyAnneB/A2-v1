@@ -59,7 +59,7 @@ public class ViewCandidateResults implements Initializable {
 	@FXML
 	private void logAdminOutScene(ActionEvent event) throws IOException{
 		admin = null;
-		Parent welcome = FXMLLoader.load(getClass().getResource("../resources/fxml/AdminLogin.fxml"));
+		Parent welcome = FXMLLoader.load(getClass().getResource("/fxml/AdminLogin.fxml"));
 		Scene welcomeScene = new Scene(welcome);
 
 		//get stage information
@@ -71,7 +71,7 @@ public class ViewCandidateResults implements Initializable {
 	@FXML
 	private void addVoterScene(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../resources/fxml/addNewVoter.fxml"));
+		loader.setLocation(getClass().getResource("/fxml/addNewVoter.fxml"));
 		Parent welcomeAdmin = loader.load();
 
 		Scene welcomeAdminScene = new Scene(welcomeAdmin);
@@ -87,7 +87,7 @@ public class ViewCandidateResults implements Initializable {
 	@FXML
 	private void deleteVoterScene (ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../resources/fxml/DeleteVoter.fxml"));
+		loader.setLocation(getClass().getResource("/fxml/DeleteVoter.fxml"));
 		Parent welcomeAdmin = loader.load();
 
 		Scene welcomeAdminScene = new Scene(welcomeAdmin);
@@ -104,9 +104,8 @@ public class ViewCandidateResults implements Initializable {
 	@FXML
 	private void getVotingResultsScene(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../resources/fxml/ViewCandidateResults.fxml"));
+		loader.setLocation(getClass().getResource("/fxml/ViewCandidateResults.fxml"));
 		Parent welcomeAdmin = loader.load();
-
 		Scene welcomeAdminScene = new Scene(welcomeAdmin);
 
 		ViewCandidateResults controller = loader.getController();
@@ -121,7 +120,7 @@ public class ViewCandidateResults implements Initializable {
 	@FXML
 	private void passwordChScene(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../resources/fxml/AdminChangePassword.fxml"));
+		loader.setLocation(getClass().getResource("/fxml/AdminChangePassword.fxml"));
 		Parent welcomeAdmin = loader.load();
 
 		Scene scene = new Scene(welcomeAdmin);
@@ -139,7 +138,7 @@ public class ViewCandidateResults implements Initializable {
 	private void addCandidateScene(ActionEvent event) throws IOException{
 		//link to addCandidate
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../resources/fxml/AddCandidate.fxml"));
+		loader.setLocation(getClass().getResource("/fxml/AddCandidate.fxml"));
 		Parent addC = loader.load();
 		Scene scene = new Scene(addC);
 
@@ -156,7 +155,7 @@ public class ViewCandidateResults implements Initializable {
 	private void deleteCandidateScene(ActionEvent event)throws IOException{
 		//link to deleteCandidate
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../resources/fxml/DeleteCandidate.fxml"));
+		loader.setLocation(getClass().getResource("/fxml/DeleteCandidate.fxml"));
 		Parent deleteC = loader.load();
 		Scene scene = new Scene(deleteC);
 
@@ -178,7 +177,7 @@ public class ViewCandidateResults implements Initializable {
 
 	public void backScene(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../resources/fxml/WelcomeAdmin.fxml"));
+		loader.setLocation(getClass().getResource("/fxml/WelcomeAdmin.fxml"));
 		Parent menu = loader.load();
 
 		Scene voteScene = new Scene(menu);

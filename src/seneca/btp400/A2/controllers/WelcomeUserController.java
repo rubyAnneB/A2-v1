@@ -56,7 +56,7 @@ public class WelcomeUserController implements Initializable {
 	public void changetoVotingScreen(ActionEvent event) throws IOException, SQLException {
 		if (agreeChckbx.isSelected()) {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("../resources/fxml/Vote.fxml"));
+			loader.setLocation(getClass().getResource("/fxml/Vote.fxml"));
 			Parent vote = loader.load();
 
 			Scene voteScene = new Scene(vote);
@@ -80,7 +80,7 @@ public class WelcomeUserController implements Initializable {
      */
     public void cancelVote (ActionEvent event) throws IOException{
         voter = null;
-        Parent welcome = FXMLLoader.load(getClass().getResource("../resources/fxml/Welcome.fxml"));
+        Parent welcome = FXMLLoader.load(getClass().getResource("/fxml/Welcome.fxml"));
         Scene welcomeScene = new Scene(welcome);
 
         //get stage information

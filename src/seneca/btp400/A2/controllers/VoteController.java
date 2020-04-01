@@ -71,7 +71,7 @@ public class VoteController implements Initializable {
 	public void changeConfirmVoteScene(ActionEvent event, int candidateID, String candidateName) throws IOException {
 
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../resources/fxml/ConfirmVote.fxml"));
+		loader.setLocation(getClass().getResource("/fxml/ConfirmVote.fxml"));
 		Parent confirm = loader.load();
 
 		Scene confirmScene = new Scene(confirm);

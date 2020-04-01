@@ -48,7 +48,7 @@ public class AdminLoginController implements Initializable {
 	@FXML
 	private void backClick (ActionEvent event) throws IOException{
 		admin = null;
-        Parent welcome = FXMLLoader.load(getClass().getResource("../resources/fxml/Welcome.fxml"));
+        Parent welcome = FXMLLoader.load(getClass().getResource("/fxml/Welcome.fxml"));
         Scene welcomeScene = new Scene(welcome);
 
         //get stage information
@@ -79,7 +79,7 @@ public class AdminLoginController implements Initializable {
 	@FXML
 	private void welcomeAdminSceneChange(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../resources/fxml/WelcomeAdmin.fxml"));
+		loader.setLocation(getClass().getResource("/fxml/WelcomeAdmin.fxml"));
 		Parent welcomeAdmin = loader.load();
 
 		Scene welcomeAdminScene = new Scene(welcomeAdmin);

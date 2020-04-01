@@ -80,7 +80,7 @@ public class ConfirmVoteController implements Initializable {
 	 * @throws IOException
 	 */
 	public void changeThankYouScene(ActionEvent event) throws IOException {
-		Parent thanks = FXMLLoader.load(getClass().getResource("../resources/fxml/ThankYou.fxml"));
+		Parent thanks = FXMLLoader.load(getClass().getResource("/fxml/ThankYou.fxml"));
 		Scene thanksScene = new Scene(thanks);
 
 		// get stage information
@@ -96,7 +96,7 @@ public class ConfirmVoteController implements Initializable {
 	 * @throws IOException
 	 */
 	public void cancelVote(ActionEvent event) throws IOException {
-		Parent welcome = FXMLLoader.load(getClass().getResource("../resources/fxml/Welcome.fxml"));
+		Parent welcome = FXMLLoader.load(getClass().getResource("/fxml/Welcome.fxml"));
 		Scene welcomeScene = new Scene(welcome);
 
 		// get stage information
@@ -108,7 +108,7 @@ public class ConfirmVoteController implements Initializable {
 	// Added by Daniel
 	public void changeVote(ActionEvent event) throws IOException, SQLException {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../resources/fxml/Vote.fxml"));
+		loader.setLocation(getClass().getResource("/fxml/Vote.fxml"));
 		Parent vote = loader.load();
 
 		Scene voteScene = new Scene(vote);
