@@ -1,5 +1,9 @@
 package seneca.btp400.A2.model;
 
+/**
+ * @author Daniel Derich
+ * @since 2020-03-30
+ */
 public class Administrator {
 	private int adminid;
 	private String fname;
