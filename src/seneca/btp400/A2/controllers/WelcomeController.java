@@ -37,7 +37,7 @@ public class WelcomeController implements Initializable {
 	 */
 	@FXML
 	private void LoginAction(ActionEvent event) throws IOException {
-		Parent login = FXMLLoader.load(getClass().getResource("../resources/fxml/Login.fxml"));
+		Parent login = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
 		Scene loginScene = new Scene(login);
 
 		// get stage information
@@ -48,7 +48,7 @@ public class WelcomeController implements Initializable {
 
 	@FXML
 	private void AdminLoginAction(ActionEvent event) throws IOException {
-		Parent alogin = FXMLLoader.load(getClass().getResource("../resources/fxml/AdminLogin.fxml"));
+		Parent alogin = FXMLLoader.load(getClass().getResource("/fxml/AdminLogin.fxml"));
 		Scene adminloginScene = new Scene(alogin);
 
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

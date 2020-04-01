@@ -49,7 +49,7 @@ public class LoginController implements Initializable {
     @FXML
     private void backbtnAction(ActionEvent event) throws IOException {
         voter = null;
-        Parent welcome = FXMLLoader.load(getClass().getResource("../resources/fxml/Welcome.fxml"));
+        Parent welcome = FXMLLoader.load(getClass().getResource("/fxml/Welcome.fxml"));
         Scene welcomeScene = new Scene(welcome);
 
         //get stage information
@@ -66,7 +66,7 @@ public class LoginController implements Initializable {
     private void welcomeUserSceneChange (ActionEvent event) throws IOException{
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../resources/fxml/WelcomeUser.fxml"));
+        loader.setLocation(getClass().getResource("/fxml/WelcomeUser.fxml"));
         Parent welcomeUser= loader.load();
 
         Scene welcomeUserScene = new Scene(welcomeUser);
