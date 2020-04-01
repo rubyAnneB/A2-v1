@@ -23,10 +23,10 @@ import seneca.btp400.A2.model.Administrator;
 
 /**
  * @author Daniel Derich
- * @since 2020-03-27
+ * @since 2020-03-29
  * @version 1.0
  *
- *   Controller for administrator login, authentication
+ * Controller for administrator login, authentication
  */
 public class AdminLoginController implements Initializable {
 	@FXML

@@ -22,7 +22,7 @@ import seneca.btp400.A2.model.Administrator;
 /**
  * @author Daniel Derich
  * @since 2020-03-30
- * @version 1.0
+ * @version 1.0 
  */
 public class AdminChangePassword implements Initializable {
 	

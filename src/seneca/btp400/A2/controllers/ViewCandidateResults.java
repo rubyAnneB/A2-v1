@@ -22,7 +22,11 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
+/**
+ * @author Daniel Derich, Ruby Anne Bautista
+ * @since 2020-03-31
+ * @version 1.0
+ */
 public class ViewCandidateResults implements Initializable {
 
 	@FXML

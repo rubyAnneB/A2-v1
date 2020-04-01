@@ -19,7 +19,11 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
+/**
+ * @author Ruby Anne Bautista, Daniel Derich
+ * @since 2020-03-30
+ * @version 1.0
+ */
 public class AddCandidateController implements Initializable {
 
     @FXML
