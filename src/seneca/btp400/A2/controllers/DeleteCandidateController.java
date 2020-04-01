@@ -23,6 +23,7 @@ import java.util.ResourceBundle;
  * @author Ruby Anne Bautista, Daniel Derich
  * @since 2020-03-30
  * @version 1.0
+ */
 public class DeleteCandidateController implements Initializable {
 
 
