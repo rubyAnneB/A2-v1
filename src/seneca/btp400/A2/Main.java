@@ -6,11 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import seneca.btp400.A2.dao.dbAccessObj;
-import seneca.btp400.A2.model.Voter;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  * @author Ruby Anne Bautista

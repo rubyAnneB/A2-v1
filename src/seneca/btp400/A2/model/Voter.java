@@ -64,14 +64,6 @@ public class Voter {
 	public String getFullName() {
 		return fname + " " + lname;
 	}
-
-	public String getFname() {
-		return fname;
-	}
-
-	public String getLname() {
-		return lname;
-	}
 	
 	public String getEmail() {
 		return email;
@@ -91,5 +83,5 @@ public class Voter {
 				+ '\'' + ", voted=" + voted + '}';
 	}
 
-	// todo: Implement the equals method and hashcode method
+
 }

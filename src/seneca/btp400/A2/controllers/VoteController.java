@@ -31,7 +31,7 @@ public class VoteController implements Initializable {
 	/**
 	 * Associates the ToggleButton with the ID of the candidate
 	 */
-	static class CandidateToggleButton extends RadioButton {
+	class CandidateToggleButton extends RadioButton {
 		int ID;
 
 		CandidateToggleButton(ToggleGroup c, String name, int ID) {

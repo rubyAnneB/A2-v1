@@ -14,13 +14,13 @@
    <children>
       <AnchorPane depthTest="ENABLE" prefHeight="811.0" prefWidth="186.0">
          <children>
-            <Button fx:id="viewCandidates" layoutX="1.0" layoutY="280.0" mnemonicParsing="false" onAction="#getVotingResults" prefHeight="84.0" prefWidth="227.0" text="Current Voting Reports" />
-            <Button fx:id="addCandidatebtn" layoutY="384.0" mnemonicParsing="false" onAction="#addCandidate" prefHeight="84.0" prefWidth="227.0" text="Add Candidate" />
-            <Button fx:id="deleteVoterBtn" layoutY="176.0" mnemonicParsing="false" onAction="#deleteVoter" prefHeight="84.0" prefWidth="227.0" text="Delete Voter" />
-            <Button fx:id="deleteCandidatebtn" layoutX="1.0" layoutY="485.0" mnemonicParsing="false" onAction="#deleteCandidate" prefHeight="84.0" prefWidth="227.0" text="Delete Candidate" />
-            <Button fx:id="changePassword" layoutX="1.0" layoutY="585.0" mnemonicParsing="false" onAction="#passwordCh" prefHeight="84.0" prefWidth="227.0" text="Change Password" />
-            <Button fx:id="logOut" layoutX="1.0" layoutY="691.0" mnemonicParsing="false" onAction="#logAdminOut" prefHeight="84.0" prefWidth="227.0" text="Log Out" />
-            <Button fx:id="addVoterBtn" cancelButton="true" defaultButton="true" layoutX="1.0" layoutY="75.0" mnemonicParsing="false" onAction="#addVoter" prefHeight="84.0" prefWidth="227.0" text="Add Voter" />
+            <Button fx:id="viewCandidates" layoutX="1.0" layoutY="280.0" mnemonicParsing="false" onAction="#getVotingResultsScene" prefHeight="84.0" prefWidth="227.0" text="Current Voting Reports" />
+            <Button fx:id="addCandidatebtn" layoutY="384.0" mnemonicParsing="false" onAction="#addCandidateScene" prefHeight="84.0" prefWidth="227.0" text="Add Candidate" />
+            <Button fx:id="deleteVoterBtn" layoutY="176.0" mnemonicParsing="false" onAction="#deleteVoterScene" prefHeight="84.0" prefWidth="227.0" text="Delete Voter" />
+            <Button fx:id="deleteCandidatebtn" layoutX="1.0" layoutY="485.0" mnemonicParsing="false" onAction="#deleteCandidateScene" prefHeight="84.0" prefWidth="227.0" text="Delete Candidate" />
+            <Button fx:id="changePassword" layoutX="1.0" layoutY="585.0" mnemonicParsing="false" onAction="#passwordChScene" prefHeight="84.0" prefWidth="227.0" text="Change Password" />
+            <Button fx:id="logOut" layoutX="1.0" layoutY="691.0" mnemonicParsing="false" onAction="#logAdminOutScene" prefHeight="84.0" prefWidth="227.0" text="Log Out" />
+            <Button fx:id="addVoterBtn" cancelButton="true" defaultButton="true" layoutX="1.0" layoutY="75.0" mnemonicParsing="false" onAction="#addVoterScene" prefHeight="84.0" prefWidth="227.0" text="Add Voter" />
          </children>
       </AnchorPane>
       <Separator layoutX="225.0" opacity="0.82" orientation="VERTICAL" prefHeight="811.0" prefWidth="18.0">

@@ -87,9 +87,8 @@ public class dbAccessObj {
 	}
 
 
-
 	public ResultSet getAdmin(String email) throws SQLException {
-		return statement.executeQuery("select * from admins where email like '" + email);
+		return statement.executeQuery("select * from admins where email like '" + email + "'");
 	}
 	
 	public void setNewAdminPassword(int pId, String newPass) throws SQLException {
@@ -106,6 +105,6 @@ public class dbAccessObj {
     }
 
     public void deleteVoter(int id, String e) throws SQLException {
-    	statement.execute("delete from students where idStudent = " + id + " AND email = '" + e);
+    	statement.execute("delete from students where idStudent = " + id + " AND email = '" + e + "'");
     }
 }

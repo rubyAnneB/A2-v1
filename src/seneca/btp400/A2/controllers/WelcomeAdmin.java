@@ -50,7 +50,7 @@ public class WelcomeAdmin implements Initializable {
 	}
 
 	@FXML
-	private void logAdminOut (ActionEvent event) throws IOException{
+	private void logAdminOutScene(ActionEvent event) throws IOException{
         admin = null;
         Parent welcome = FXMLLoader.load(getClass().getResource("../resources/fxml/AdminLogin.fxml"));
         Scene welcomeScene = new Scene(welcome);
@@ -62,7 +62,7 @@ public class WelcomeAdmin implements Initializable {
     }
 	
 	@FXML
-	private void addVoter (ActionEvent event) throws IOException {
+	private void addVoterScene(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("../resources/fxml/addNewVoter.fxml"));
 		Parent welcomeAdmin = loader.load();
@@ -78,7 +78,7 @@ public class WelcomeAdmin implements Initializable {
 		window.show();
 	}
 	@FXML
-	private void deleteVoter (ActionEvent event) throws IOException {
+	private void deleteVoterScene(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("../resources/fxml/DeleteVoter.fxml"));
 		Parent welcomeAdmin = loader.load();
@@ -95,7 +95,7 @@ public class WelcomeAdmin implements Initializable {
 	}
 	
 	@FXML
-	private void getVotingResults (ActionEvent event) throws IOException {
+	private void getVotingResultsScene(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("../resources/fxml/ViewCandidateResults.fxml"));
 		Parent welcomeAdmin = loader.load();
@@ -112,7 +112,7 @@ public class WelcomeAdmin implements Initializable {
 	}
 	
 	@FXML
-	private void passwordCh (ActionEvent event) throws IOException {
+	private void passwordChScene(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("../resources/fxml/AdminChangePassword.fxml"));
 		Parent welcomeAdmin = loader.load();
@@ -129,7 +129,7 @@ public class WelcomeAdmin implements Initializable {
 	}
 	
 	@FXML
-	private void addCandidate(ActionEvent event) throws IOException{
+	private void addCandidateScene(ActionEvent event) throws IOException{
 		//link to addCandidate
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("../resources/fxml/AddCandidate.fxml"));
@@ -146,7 +146,7 @@ public class WelcomeAdmin implements Initializable {
 	}
 
 	@FXML
-	private void deleteCandidate(ActionEvent event)throws IOException{
+	private void deleteCandidateScene(ActionEvent event)throws IOException{
 		//link to deleteCandidate
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("../resources/fxml/DeleteCandidate.fxml"));
