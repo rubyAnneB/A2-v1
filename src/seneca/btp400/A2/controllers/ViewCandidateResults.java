@@ -75,7 +75,7 @@ public class ViewCandidateResults implements Initializable {
 	@FXML
 	private void addVoterScene(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/fxml/addNewVoter.fxml"));
+		loader.setLocation(getClass().getResource("/fxml/AddNewVoter.fxml"));
 		Parent welcomeAdmin = loader.load();
 
 		Scene welcomeAdminScene = new Scene(welcomeAdmin);

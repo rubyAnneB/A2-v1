@@ -70,19 +70,19 @@ public class DeleteVoterController implements Initializable {
 	}
 
 	@FXML
-	private void addVoterScene(ActionEvent event) throws IOException {
+	public void addVoterScene(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/fxml/addNewVoter.fxml"));
-		Parent welcomeAdmin = loader.load();
+		loader.setLocation(getClass().getResource("/fxml/AddNewVoter.fxml"));
+		Parent addVoterscene = loader.load();
 
-		Scene welcomeAdminScene = new Scene(welcomeAdmin);
+		Scene addV = new Scene(addVoterscene);
 
 		AddNewVoterController controller = loader.getController();
 		controller.setAdmin(admin);
 		admin = null;
 
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		window.setScene(welcomeAdminScene);
+		window.setScene(addV);
 		window.show();
 	}
 	@FXML
